@@ -1,5 +1,37 @@
 # SN Admin - Registre Officiel Complet de l'Administration Sénégalaise
 
+## 🏛️ Fondement Institutionnel Officiel
+
+**DÉCRET PRÉSIDENTIEL N° 2025-1431**
+
+> **Décret n° 2025-1431 portant répartition des services de l'État et du contrôle des établissements publics, des sociétés nationales et des sociétés à participation publique entre la Présidence de la République, la Primature et les ministères**
+
+**LE PRÉSIDENT DE LA RÉPUBLIQUE,**
+
+**VU** la Constitution ;  
+**VU** la loi d'orientation n° 2009-20 du 04 mai 2009 sur les agences d'exécution ;  
+**VU** la loi d'orientation n° 2022-08 du 19 avril 2022 relative au secteur parapublic, au suivi du portefeuille de l'État et au contrôle des personnes morales de droit privé bénéficiant du concours de la puissance publique ;  
+**VU** le décret n° 2007-909 du 31 juillet 2007 relatif à l'organisation de la Présidence de la République, modifié ;  
+**VU** le décret n° 2017-314 du 15 février 2017 fixant les règles de création et d'organisation des structures de l'administration centrale des ministères ;  
+**VU** le décret n° 2024-921 du 05 avril 2025 portant nomination du Premier Ministre ;  
+**VU** le décret n° 2025-1430 du 06 septembre 2025 fixant la composition du Gouvernement ;  
+
+**SUR** le rapport du Premier Ministre,
+
+---
+
+### 📋 Légitimité Institutionnelle
+
+Ce module **SN Admin** constitue l'**implémentation numérique officielle** du décret présidentiel n° 2025-1431, permettant :
+
+✅ **Transparence constitutionnelle** : Application des principes de transparence administrative  
+✅ **Conformité réglementaire** : Respect des textes d'organisation de l'État  
+✅ **Modernisation digitale** : Digitalisation de l'organigramme gouvernemental  
+✅ **Accessibilité citoyenne** : Facilitation de l'accès aux services publics  
+✅ **Efficacité administrative** : Optimisation de la gestion des ressources humaines  
+
+---
+
 ## Description
 
 **RÉVOLUTION DANS LA TRANSPARENCE ADMINISTRATIVE DU SÉNÉGAL**

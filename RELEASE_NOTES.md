@@ -1,5 +1,20 @@
 # 📋 Notes de Version - SN Admin
 
+## 🏛️ Fondement Institutionnel Officiel
+
+### **DÉCRET PRÉSIDENTIEL N° 2025-1431**
+
+Ce module constitue l'**implémentation numérique officielle** du décret présidentiel n° 2025-1431 portant répartition des services de l'État entre la Présidence de la République, la Primature et les ministères.
+
+**Base légale** :
+- Constitution de la République du Sénégal
+- Loi d'orientation n° 2009-20 du 04 mai 2009 sur les agences d'exécution
+- Loi d'orientation n° 2022-08 du 19 avril 2022 relative au secteur parapublic
+- Décret n° 2017-314 du 15 février 2017 fixant les règles d'organisation des ministères
+- Décret n° 2025-1430 du 06 septembre 2025 fixant la composition du Gouvernement
+
+---
+
 ## 🎉 Version 1.0.0 - Release Initiale (Octobre 2024)
 
 ### 🆕 Nouvelles Fonctionnalités

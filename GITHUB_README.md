@@ -3,10 +3,43 @@
 [![Odoo Version](https://img.shields.io/badge/Odoo-18.0%20CE-blue.svg)](https://github.com/odoo/odoo)
 [![License](https://img.shields.io/badge/License-LGPL--3-green.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Official](https://img.shields.io/badge/Statut-Officiel-red.svg)](https://github.com/sama-solutions/sama_administration)
+
+## 🏛️ Fondement Institutionnel Officiel
+
+### **DÉCRET PRÉSIDENTIEL N° 2025-1431**
+
+> **Décret n° 2025-1431 portant répartition des services de l'État et du contrôle des établissements publics, des sociétés nationales et des sociétés à participation publique entre la Présidence de la République, la Primature et les ministères**
+
+**LE PRÉSIDENT DE LA RÉPUBLIQUE,**
+
+**VU** la Constitution ;  
+**VU** la loi d'orientation n° 2009-20 du 04 mai 2009 sur les agences d'exécution ;  
+**VU** la loi d'orientation n° 2022-08 du 19 avril 2022 relative au secteur parapublic ;  
+**VU** le décret n° 2007-909 du 31 juillet 2007 relatif à l'organisation de la Présidence de la République ;  
+**VU** le décret n° 2017-314 du 15 février 2017 fixant les règles d'organisation des ministères ;  
+**VU** le décret n° 2024-921 du 05 avril 2025 portant nomination du Premier Ministre ;  
+**VU** le décret n° 2025-1430 du 06 septembre 2025 fixant la composition du Gouvernement ;  
+
+**SUR** le rapport du Premier Ministre,
+
+---
+
+### 📋 Légitimité Institutionnelle
+
+Ce module **SN Admin** constitue l'**implémentation numérique officielle** du décret présidentiel n° 2025-1431 :
+
+✅ **Transparence constitutionnelle** : Application des principes de transparence administrative  
+✅ **Conformité réglementaire** : Respect des textes d'organisation de l'État  
+✅ **Modernisation digitale** : Digitalisation de l'organigramme gouvernemental  
+✅ **Accessibilité citoyenne** : Facilitation de l'accès aux services publics  
+✅ **Efficacité administrative** : Optimisation de la gestion des ressources humaines  
+
+---
 
 ## 📋 Description
 
-**SN Admin** est un module Odoo 18 Community Edition qui fournit un **registre officiel complet** de l'administration sénégalaise. Il permet la gestion transparente et accessible de l'organigramme gouvernemental du Sénégal.
+**SN Admin** est un module Odoo 18 Community Edition qui fournit un **registre officiel complet** de l'administration sénégalaise. Il permet la gestion transparente et accessible de l'organigramme gouvernemental du Sénégal, en application du décret présidentiel n° 2025-1431.
 
 ## ✨ Fonctionnalités Principales
 
