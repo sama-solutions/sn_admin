@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Placeholder file for service data -->
+        <!-- This file should be populated with actual service data from normalized CSV -->
+        <!-- Format example:
+        <record id="service_srh" model="sn.service">
+            <field name="name">Service des Ressources Humaines</field>
+            <field name="code">SRH</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_dgs"/>
+            <field name="phone">+221 33 889 34 20</field>
+            <field name="email">srh@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+        -->
+    </data>
+</odoo>

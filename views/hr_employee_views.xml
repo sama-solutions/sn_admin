@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Hériter de la vue Form hr.employee -->
+    <record id="hr_employee_form_sn_admin" model="ir.ui.view">
+        <field name="name">hr.employee.form.sn.admin</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajouter un onglet "Structure Organique" -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Structure Organique" name="sn_structure">
+                    <group>
+                        <group string="Structure Officielle">
+                            <field name="sn_agent_id"/>
+                            <field name="sn_ministry_id" readonly="1"/>
+                            <field name="sn_direction_id" readonly="1"/>
+                            <field name="sn_service_id" readonly="1"/>
+                        </group>
+                        <group string="Actions">
+                            <button name="action_create_sn_agent" 
+                                    string="Créer Agent Officiel" 
+                                    type="object" 
+                                    class="oe_highlight"
+                                    attrs="{'invisible': [('sn_agent_id', '!=', False)]}"/>
+                            <button name="action_view_sn_agent" 
+                                    string="Voir Agent Officiel" 
+                                    type="object"
+                                    attrs="{'invisible': [('sn_agent_id', '=', False)]}"/>
+                            <button name="action_view_sn_structure" 
+                                    string="Voir Structure" 
+                                    type="object"
+                                    attrs="{'invisible': [('sn_service_id', '=', False), ('sn_direction_id', '=', False), ('sn_ministry_id', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <group string="QR Code" attrs="{'invisible': [('sn_agent_id', '=', False)]}">
+                        <field name="sn_agent_id.qr_code" widget="image" readonly="1"/>
+                        <field name="sn_agent_id.qr_code_url" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+            
+            <!-- Ajouter les champs de nomination dans l'onglet Work Information -->
+            <xpath expr="//page[@name='hr_settings']" position="inside">
+                <group string="Nomination">
+                    <field name="nomination_date"/>
+                    <field name="nomination_decree"/>
+                    <field name="nomination_document" filename="nomination_document_filename"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hériter de la vue Tree hr.employee -->
+    <record id="hr_employee_tree_sn_admin" model="ir.ui.view">
+        <field name="name">hr.employee.tree.sn.admin</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="sn_ministry_id" optional="hide"/>
+                <field name="sn_direction_id" optional="hide"/>
+                <field name="sn_service_id" optional="hide"/>
+                <field name="sn_agent_id" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hériter de la vue Search hr.employee -->
+    <record id="hr_employee_search_sn_admin" model="ir.ui.view">
+        <field name="name">hr.employee.search.sn.admin</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='group_department']" position="after">
+                <filter string="Ministère" name="group_ministry" context="{'group_by': 'sn_ministry_id'}"/>
+                <filter string="Direction" name="group_direction" context="{'group_by': 'sn_direction_id'}"/>
+                <filter string="Service" name="group_service" context="{'group_by': 'sn_service_id'}"/>
+            </xpath>
+            <xpath expr="//search" position="inside">
+                <field name="sn_ministry_id"/>
+                <field name="sn_direction_id"/>
+                <field name="sn_service_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

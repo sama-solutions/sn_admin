@@ -1,0 +1,276 @@
+/* Styles pour l'organigramme interactif (back-office) */
+
+/* Container principal */
+#orgchart-container {
+    min-height: 600px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    overflow: auto;
+    position: relative;
+}
+
+/* Loader */
+.orgchart-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.orgchart-loader .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: #00853F;
+}
+
+/* Boutons d'action */
+.orgchart-actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+}
+
+.orgchart-actions .btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.orgchart-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Styles des nœuds OrgChart.js */
+.orgchart {
+    background: transparent !important;
+}
+
+.orgchart .node {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.orgchart .node:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.orgchart .node.focused {
+    border: 3px solid #00853F;
+}
+
+/* Carte de nœud personnalisée */
+.node-card {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 180px;
+    max-width: 250px;
+}
+
+.node-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.node-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.node-subtitle {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.node-count {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Couleurs par type de nœud */
+.node-card.presidency {
+    background-color: #E31B23;
+    color: white;
+}
+
+.node-card.primature {
+    background-color: #0066CC;
+    color: white;
+}
+
+.node-card.ministry {
+    background-color: #00853F;
+    color: white;
+}
+
+.node-card.direction {
+    background-color: #FDEF42;
+    color: #212529;
+}
+
+.node-card.service {
+    background-color: #CCCCCC;
+    color: #212529;
+}
+
+.node-card.agent {
+    background-color: white;
+    color: #212529;
+    border: 2px solid #dee2e6;
+}
+
+/* Lignes de connexion */
+.orgchart .lines .downLine,
+.orgchart .lines .leftLine,
+.orgchart .lines .rightLine,
+.orgchart .lines .topLine {
+    background-color: #495057;
+}
+
+.orgchart .lines .downLine {
+    width: 2px;
+}
+
+.orgchart .lines .leftLine,
+.orgchart .lines .rightLine {
+    height: 2px;
+}
+
+/* Boutons expand/collapse */
+.orgchart .toggleBtn {
+    background-color: #00853F;
+    border-color: #00853F;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 24px;
+    transition: all 0.3s ease;
+}
+
+.orgchart .toggleBtn:hover {
+    background-color: #006d33;
+    transform: scale(1.1);
+}
+
+/* Légende */
+.orgchart-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.orgchart-legend h6 {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #00853F;
+}
+
+.orgchart-legend .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.orgchart-legend .legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #orgchart-container {
+        min-height: 400px;
+        padding: 10px;
+    }
+    
+    .orgchart-actions {
+        top: 10px;
+        right: 10px;
+        flex-direction: column;
+    }
+    
+    .orgchart-legend {
+        bottom: 10px;
+        left: 10px;
+        font-size: 11px;
+    }
+    
+    .node-card {
+        min-width: 140px;
+        max-width: 180px;
+        padding: 10px;
+    }
+    
+    .node-title {
+        font-size: 12px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.orgchart .node {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Mode plein écran */
+#orgchart-container:fullscreen {
+    background: white;
+    padding: 40px;
+}
+
+#orgchart-container:fullscreen .orgchart-actions {
+    top: 40px;
+    right: 40px;
+}
+
+/* Erreur */
+.orgchart-error {
+    text-align: center;
+    padding: 40px;
+    color: #dc3545;
+}
+
+.orgchart-error i {
+    font-size: 48px;
+    margin-bottom: 20px;
+}

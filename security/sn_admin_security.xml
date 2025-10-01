@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Catégorie de module -->
+    <record id="module_category_sn_admin" model="ir.module.category">
+        <field name="name">SN Admin</field>
+        <field name="description">Gestion de l'organigramme de l'administration sénégalaise</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <!-- Groupes de sécurité -->
+    
+    <!-- Groupe Utilisateur -->
+    <record id="group_sn_admin_user" model="res.groups">
+        <field name="name">SN Admin / Utilisateur</field>
+        <field name="category_id" ref="module_category_sn_admin"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Consultation uniquement</field>
+    </record>
+
+    <!-- Groupe Gestionnaire -->
+    <record id="group_sn_admin_manager" model="res.groups">
+        <field name="name">SN Admin / Gestionnaire</field>
+        <field name="category_id" ref="module_category_sn_admin"/>
+        <field name="implied_ids" eval="[(4, ref('group_sn_admin_user'))]"/>
+        <field name="comment">Consultation + Modification + Création</field>
+    </record>
+
+    <!-- Groupe Administrateur -->
+    <record id="group_sn_admin_admin" model="res.groups">
+        <field name="name">SN Admin / Administrateur</field>
+        <field name="category_id" ref="module_category_sn_admin"/>
+        <field name="implied_ids" eval="[(4, ref('group_sn_admin_manager'))]"/>
+        <field name="comment">Tous droits + Suppression + Configuration</field>
+    </record>
+
+    <!-- Règles d'enregistrement (Record Rules) -->
+    
+    <!-- Règle publique pour les ministères -->
+    <record id="rule_sn_ministry_public" model="ir.rule">
+        <field name="name">Ministères publics</field>
+        <field name="model_id" ref="model_sn_ministry"/>
+        <field name="domain_force">[('active', '=', True), ('state', '=', 'active')]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Règle publique pour les directions -->
+    <record id="rule_sn_direction_public" model="ir.rule">
+        <field name="name">Directions publiques</field>
+        <field name="model_id" ref="model_sn_direction"/>
+        <field name="domain_force">[('active', '=', True), ('state', '=', 'active')]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Règle publique pour les services -->
+    <record id="rule_sn_service_public" model="ir.rule">
+        <field name="name">Services publics</field>
+        <field name="model_id" ref="model_sn_service"/>
+        <field name="domain_force">[('active', '=', True), ('state', '=', 'active')]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Règle publique pour les agents -->
+    <record id="rule_sn_agent_public" model="ir.rule">
+        <field name="name">Agents publics</field>
+        <field name="model_id" ref="model_sn_agent"/>
+        <field name="domain_force">[('active', '=', True), ('state', '=', 'active')]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+</odoo>

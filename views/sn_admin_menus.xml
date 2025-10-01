@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu racine -->
+    <menuitem id="menu_sn_admin_root"
+              name="SN Admin"
+              sequence="10"
+              web_icon="sn_admin,static/description/icon.png"/>
+
+    <!-- Sous-menu Organigramme -->
+    <menuitem id="menu_sn_admin_organigramme"
+              name="Organigramme"
+              parent="menu_sn_admin_root"
+              sequence="10"/>
+
+    <!-- Menus de premier niveau -->
+    <menuitem id="menu_sn_admin_ministry"
+              name="Ministères"
+              parent="menu_sn_admin_organigramme"
+              action="sn_ministry_action"
+              sequence="10"/>
+
+    <menuitem id="menu_sn_admin_direction"
+              name="Directions"
+              parent="menu_sn_admin_organigramme"
+              action="sn_direction_action"
+              sequence="20"/>
+
+    <menuitem id="menu_sn_admin_service"
+              name="Services"
+              parent="menu_sn_admin_organigramme"
+              action="sn_service_action"
+              sequence="30"/>
+
+    <menuitem id="menu_sn_admin_agent"
+              name="Agents"
+              parent="menu_sn_admin_organigramme"
+              action="sn_agent_action"
+              sequence="40"/>
+
+    <!-- Sous-menu Recherche -->
+    <menuitem id="menu_sn_admin_search"
+              name="Recherche"
+              parent="menu_sn_admin_root"
+              sequence="20"/>
+
+    <menuitem id="menu_sn_admin_search_interlocuteur"
+              name="Recherche d'interlocuteur"
+              parent="menu_sn_admin_search"
+              action="sn_admin_search_action"
+              sequence="10"/>
+
+    <menuitem id="menu_sn_admin_annuaire"
+              name="Annuaire complet"
+              parent="menu_sn_admin_search"
+              action="sn_agent_action"
+              sequence="20"/>
+
+    <!-- Sous-menu Rapports -->
+    <menuitem id="menu_sn_admin_reports"
+              name="Rapports"
+              parent="menu_sn_admin_root"
+              sequence="30"/>
+
+    <menuitem id="menu_sn_admin_report_organigramme"
+              name="Organigramme hiérarchique"
+              parent="menu_sn_admin_reports"
+              action="action_report_sn_organigramme"
+              sequence="10"/>
+
+    <menuitem id="menu_sn_admin_report_annuaire"
+              name="Annuaire par ministère"
+              parent="menu_sn_admin_reports"
+              action="action_report_sn_annuaire"
+              sequence="20"/>
+
+    <menuitem id="menu_sn_admin_dashboard"
+              name="Statistiques"
+              parent="menu_sn_admin_reports"
+              action="sn_admin_dashboard_action"
+              sequence="30"/>
+
+    <!-- Sous-menu Configuration -->
+    <menuitem id="menu_sn_admin_config"
+              name="Configuration"
+              parent="menu_sn_admin_root"
+              groups="group_sn_admin_admin"
+              sequence="100"/>
+
+    <menuitem id="menu_sn_admin_settings"
+              name="Paramètres"
+              parent="menu_sn_admin_config"
+              action="base.action_res_config"
+              sequence="10"/>
+
+</odoo>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template QWeb pour le rapport statistiques -->
+    <template id="report_sn_statistics_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page" style="page-orientation: landscape;">
+                        <div class="text-center">
+                            <h2>Statistiques de l'Administration Sénégalaise</h2>
+                            <p>Date de génération: <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></p>
+                        </div>
+                        
+                        <!-- Section 1: Vue d'ensemble -->
+                        <div class="mt-4">
+                            <h3 style="color: #00853F; border-bottom: 2px solid #00853F; padding-bottom: 5px;">Vue d'ensemble</h3>
+                            <t t-set="total_ministries" t-value="env['sn.ministry'].search_count([('active', '=', True), ('state', '=', 'active')])"/>
+                            <t t-set="total_directions" t-value="env['sn.direction'].search_count([('active', '=', True), ('state', '=', 'active')])"/>
+                            <t t-set="total_services" t-value="env['sn.service'].search_count([('active', '=', True), ('state', '=', 'active')])"/>
+                            <t t-set="total_agents" t-value="env['sn.agent'].search_count([('active', '=', True), ('state', '=', 'active')])"/>
+                            
+                            <div class="row mt-3">
+                                <div class="col-3 text-center">
+                                    <div style="background-color: #e3f2fd; padding: 20px; border-radius: 5px;">
+                                        <h1 style="color: #1976d2; margin: 0;"><t t-esc="total_ministries"/></h1>
+                                        <p style="margin: 0;">Ministères</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <div style="background-color: #e8f5e9; padding: 20px; border-radius: 5px;">
+                                        <h1 style="color: #388e3c; margin: 0;"><t t-esc="total_directions"/></h1>
+                                        <p style="margin: 0;">Directions</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <div style="background-color: #fff3e0; padding: 20px; border-radius: 5px;">
+                                        <h1 style="color: #f57c00; margin: 0;"><t t-esc="total_services"/></h1>
+                                        <p style="margin: 0;">Services</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <div style="background-color: #fce4ec; padding: 20px; border-radius: 5px;">
+                                        <h1 style="color: #c2185b; margin: 0;"><t t-esc="total_agents"/></h1>
+                                        <p style="margin: 0;">Agents</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <table class="table table-sm table-bordered mt-3">
+                                <thead style="background-color: #f0f0f0;">
+                                    <tr>
+                                        <th>Type de Ministère</th>
+                                        <th class="text-right">Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Présidence</td>
+                                        <td class="text-right"><t t-esc="env['sn.ministry'].search_count([('type', '=', 'presidency'), ('active', '=', True), ('state', '=', 'active')])"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Primature</td>
+                                        <td class="text-right"><t t-esc="env['sn.ministry'].search_count([('type', '=', 'primature'), ('active', '=', True), ('state', '=', 'active')])"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ministères</td>
+                                        <td class="text-right"><t t-esc="env['sn.ministry'].search_count([('type', '=', 'ministry'), ('active', '=', True), ('state', '=', 'active')])"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Section 2: Répartition par ministère -->
+                        <div class="mt-4" style="page-break-before: always;">
+                            <h3 style="color: #00853F; border-bottom: 2px solid #00853F; padding-bottom: 5px;">Répartition par ministère</h3>
+                            <t t-set="ministries" t-value="env['sn.ministry'].search([('active', '=', True), ('state', '=', 'active')], order='agent_count desc')"/>
+                            
+                            <table class="table table-sm table-bordered mt-3">
+                                <thead style="background-color: #f0f0f0;">
+                                    <tr>
+                                        <th>Ministère</th>
+                                        <th class="text-right">Directions</th>
+                                        <th class="text-right">Services</th>
+                                        <th class="text-right">Agents</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="ministries" t-as="ministry">
+                                        <tr>
+                                            <td><t t-esc="ministry.name"/></td>
+                                            <td class="text-right"><t t-esc="ministry.direction_count"/></td>
+                                            <td class="text-right"><t t-esc="ministry.service_count"/></td>
+                                            <td class="text-right"><t t-esc="ministry.agent_count"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Section 3: Top 10 -->
+                        <div class="mt-4">
+                            <h3 style="color: #00853F; border-bottom: 2px solid #00853F; padding-bottom: 5px;">Top 10 Ministères par nombre d'agents</h3>
+                            <t t-set="top_ministries" t-value="env['sn.ministry'].search([('active', '=', True), ('state', '=', 'active')], order='agent_count desc', limit=10)"/>
+                            
+                            <table class="table table-sm table-bordered mt-3">
+                                <thead style="background-color: #f0f0f0;">
+                                    <tr>
+                                        <th>Rang</th>
+                                        <th>Ministère</th>
+                                        <th class="text-right">Nombre d'agents</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="top_ministries" t-as="ministry">
+                                        <tr>
+                                            <td><t t-esc="ministry_index + 1"/></td>
+                                            <td><t t-esc="ministry.name"/></td>
+                                            <td class="text-right"><t t-esc="ministry.agent_count"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Action Rapport -->
+    <record id="action_report_sn_statistics" model="ir.actions.report">
+        <field name="name">Statistiques</field>
+        <field name="model">sn.ministry</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sn_admin.report_sn_statistics_document</field>
+        <field name="report_file">sn_admin.report_sn_statistics_document</field>
+        <field name="binding_model_id" ref="model_sn_ministry"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

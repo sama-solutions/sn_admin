@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue de recherche avancée unifiée -->
+    <record id="sn_admin_search_view_form" model="ir.ui.view">
+        <field name="name">sn.admin.search.form</field>
+        <field name="model">sn.agent</field>
+        <field name="arch" type="xml">
+            <form string="Recherche d'interlocuteur">
+                <sheet>
+                    <group>
+                        <group string="Critères de recherche">
+                            <field name="name" string="Nom ou Prénom"/>
+                            <field name="function" string="Fonction"/>
+                            <field name="ministry_id" string="Ministère"/>
+                            <field name="direction_id" string="Direction" domain="[('ministry_id', '=', ministry_id)]"/>
+                            <field name="service_id" string="Service" domain="[('direction_id', '=', direction_id)]"/>
+                        </group>
+                        <group string="Coordonnées">
+                            <field name="work_phone" string="Téléphone"/>
+                            <field name="work_email" string="Email"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue des résultats de recherche -->
+    <record id="sn_admin_search_result_tree" model="ir.ui.view">
+        <field name="name">sn.admin.search.result.tree</field>
+        <field name="model">sn.agent</field>
+        <field name="arch" type="xml">
+            <list string="Résultats de recherche" create="false" edit="false">
+                <field name="name"/>
+                <field name="function"/>
+                <field name="service_id"/>
+                <field name="direction_id"/>
+                <field name="ministry_id"/>
+                <field name="work_phone"/>
+                <field name="work_email"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action de recherche -->
+    <record id="sn_admin_search_action" model="ir.actions.act_window">
+        <field name="name">Recherche d'interlocuteur</field>
+        <field name="res_model">sn.agent</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('sn_admin_search_result_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('sn_agent_view_form')})]"/>
+        <field name="domain">[('active', '=', True), ('state', '=', 'active')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Rechercher un interlocuteur
+            </p>
+            <p>
+                Utilisez les filtres pour trouver rapidement un agent de l'administration.
+            </p>
+        </field>
+    </record>
+
+</odoo>

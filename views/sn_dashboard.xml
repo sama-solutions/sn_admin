@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue Dashboard -->
+    <record id="sn_admin_dashboard_view" model="ir.ui.view">
+        <field name="name">sn.admin.dashboard</field>
+        <field name="model">sn.ministry</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard" create="false" edit="false">
+                <field name="name"/>
+                <field name="direction_count"/>
+                <field name="service_count"/>
+                <field name="agent_count"/>
+                <field name="type"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="container o_kanban_card_content">
+                            <div class="row">
+                                <!-- Statistiques globales -->
+                                <div class="col-md-3 o_kanban_primary_left">
+                                    <button class="btn btn-primary" name="action_view_directions" type="object">
+                                        <span class="o_stat_value"><field name="direction_count"/></span>
+                                        <span class="o_stat_text">Directions</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-3 o_kanban_primary_left">
+                                    <button class="btn btn-info" name="action_view_services" type="object">
+                                        <span class="o_stat_value"><field name="service_count"/></span>
+                                        <span class="o_stat_text">Services</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-3 o_kanban_primary_left">
+                                    <button class="btn btn-success" name="action_view_agents" type="object">
+                                        <span class="o_stat_value"><field name="agent_count"/></span>
+                                        <span class="o_stat_text">Agents</span>
+                                    </button>
+                                </div>
+                                <div class="col-md-3 o_kanban_primary_right">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <strong><field name="name"/></strong>
+                                        </div>
+                                        <div class="col-12">
+                                            <field name="type"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action Dashboard -->
+    <record id="sn_admin_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Tableau de Bord</field>
+        <field name="res_model">sn.ministry</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="sn_admin_dashboard_view"/>
+        <field name="domain">[('active', '=', True), ('state', '=', 'active')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tableau de bord
+            </p>
+            <p>
+                Vue d'ensemble des statistiques de l'administration sénégalaise.
+            </p>
+        </field>
+    </record>
+
+</odoo>

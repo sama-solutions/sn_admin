@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template QWeb pour le rapport organigramme -->
+    <template id="report_sn_organigramme_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center">
+                            <h2>Organigramme de l'Administration Sénégalaise</h2>
+                            <p>Date de génération: <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></p>
+                        </div>
+                        
+                        <t t-set="ministries" t-value="env['sn.ministry'].search([('active', '=', True), ('state', '=', 'active')], order='type, name')"/>
+                        
+                        <t t-foreach="ministries" t-as="ministry">
+                            <div class="mt-4">
+                                <h3 style="color: #00853F; font-weight: bold;">
+                                    <t t-esc="ministry.code"/> - <t t-esc="ministry.name"/>
+                                    <small class="text-muted">(<t t-esc="dict(ministry._fields['type'].selection).get(ministry.type)"/>)</small>
+                                </h3>
+                                
+                                <t t-if="ministry.direction_ids">
+                                    <t t-foreach="ministry.direction_ids.filtered(lambda d: d.active and d.state == 'active')" t-as="direction">
+                                        <div class="ml-4 mt-2">
+                                            <h4 style="color: #333;">
+                                                <i class="fa fa-angle-right"/> <t t-esc="direction.code"/> - <t t-esc="direction.name"/>
+                                                <small class="text-muted">(<t t-esc="dict(direction._fields['type'].selection).get(direction.type)"/>)</small>
+                                            </h4>
+                                            
+                                            <t t-if="direction.service_ids">
+                                                <t t-foreach="direction.service_ids.filtered(lambda s: s.active and s.state == 'active')" t-as="service">
+                                                    <div class="ml-4 mt-1">
+                                                        <h5 style="color: #666;">
+                                                            <i class="fa fa-angle-double-right"/> <t t-esc="service.code"/> - <t t-esc="service.name"/>
+                                                            <small class="text-muted">(<t t-esc="dict(service._fields['type'].selection).get(service.type)"/>)</small>
+                                                        </h5>
+                                                        
+                                                        <t t-if="service.agent_ids">
+                                                            <t t-foreach="service.agent_ids.filtered(lambda a: a.active and a.state == 'active')" t-as="agent">
+                                                                <div class="ml-4" style="font-size: 0.9em;">
+                                                                    <i class="fa fa-user"/> <t t-esc="agent.name"/> - <t t-esc="agent.function"/>
+                                                                </div>
+                                                            </t>
+                                                        </t>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Action Rapport -->
+    <record id="action_report_sn_organigramme" model="ir.actions.report">
+        <field name="name">Organigramme Hiérarchique</field>
+        <field name="model">sn.ministry</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sn_admin.report_sn_organigramme_document</field>
+        <field name="report_file">sn_admin.report_sn_organigramme_document</field>
+        <field name="binding_model_id" ref="model_sn_ministry"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

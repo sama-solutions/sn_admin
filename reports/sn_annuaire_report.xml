@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template QWeb pour le rapport annuaire -->
+    <template id="report_sn_annuaire_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center">
+                            <h2>Annuaire de l'Administration Sénégalaise</h2>
+                            <p>Date de génération: <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/></p>
+                        </div>
+                        
+                        <t t-set="ministries" t-value="env['sn.ministry'].search([('active', '=', True), ('state', '=', 'active')], order='type, name')"/>
+                        
+                        <t t-foreach="ministries" t-as="ministry">
+                            <div class="mt-4" style="page-break-inside: avoid;">
+                                <h3 style="color: #00853F; font-weight: bold; border-bottom: 2px solid #00853F; padding-bottom: 5px;">
+                                    <t t-esc="ministry.code"/> - <t t-esc="ministry.name"/>
+                                </h3>
+                                
+                                <div class="row mt-2">
+                                    <div class="col-6">
+                                        <p t-if="ministry.address"><strong>Adresse:</strong> <t t-esc="ministry.address"/></p>
+                                        <p t-if="ministry.phone"><strong>Téléphone:</strong> <t t-esc="ministry.phone"/></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p t-if="ministry.email"><strong>Email:</strong> <t t-esc="ministry.email"/></p>
+                                        <p t-if="ministry.website"><strong>Site Web:</strong> <t t-esc="ministry.website"/></p>
+                                    </div>
+                                </div>
+                                
+                                <t t-set="agents" t-value="env['sn.agent'].search([('ministry_id', '=', ministry.id), ('active', '=', True), ('state', '=', 'active')], order='direction_id, service_id, name')"/>
+                                
+                                <t t-if="agents">
+                                    <table class="table table-sm table-bordered mt-3">
+                                        <thead style="background-color: #f0f0f0;">
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Fonction</th>
+                                                <th>Service</th>
+                                                <th>Direction</th>
+                                                <th>Téléphone</th>
+                                                <th>Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="agents" t-as="agent">
+                                                <tr>
+                                                    <td><t t-esc="agent.name"/></td>
+                                                    <td><t t-esc="agent.function"/></td>
+                                                    <td><t t-esc="agent.service_id.name"/></td>
+                                                    <td><t t-esc="agent.direction_id.name"/></td>
+                                                    <td><t t-esc="agent.work_phone or agent.mobile_phone or ''"/></td>
+                                                    <td><t t-esc="agent.work_email or ''"/></td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Action Rapport -->
+    <record id="action_report_sn_annuaire" model="ir.actions.report">
+        <field name="name">Annuaire par Ministère</field>
+        <field name="model">sn.ministry</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sn_admin.report_sn_annuaire_document</field>
+        <field name="report_file">sn_admin.report_sn_annuaire_document</field>
+        <field name="binding_model_id" ref="model_sn_ministry"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Placeholder file for ministry data -->
+        <!-- This file should be populated with actual ministry data from normalized CSV -->
+        <!-- Format example:
+        <record id="ministry_msas" model="sn.ministry">
+            <field name="name">Ministère de la Santé et de l'Action Sociale</field>
+            <field name="code">MSAS</field>
+            <field name="type">ministry</field>
+            <field name="address">Rue Aimé Césaire, Dakar</field>
+            <field name="phone">+221 33 889 34 00</field>
+            <field name="email">contact@sante.gouv.sn</field>
+            <field name="website">http://www.sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+        -->
+    </data>
+</odoo>

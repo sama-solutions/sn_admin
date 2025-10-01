@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Placeholder file for direction data -->
+        <!-- This file should be populated with actual direction data from normalized CSV -->
+        <!-- Format example:
+        <record id="direction_dgs" model="sn.direction">
+            <field name="name">Direction Générale de la Santé</field>
+            <field name="code">DGS</field>
+            <field name="type">generale</field>
+            <field name="ministry_id" ref="ministry_msas"/>
+            <field name="phone">+221 33 889 34 10</field>
+            <field name="email">dgs@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+        -->
+    </data>
+</odoo>

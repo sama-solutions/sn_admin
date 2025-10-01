@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sn_ministry_user,sn.ministry.user,model_sn_ministry,group_sn_admin_user,1,0,0,0
+access_sn_ministry_manager,sn.ministry.manager,model_sn_ministry,group_sn_admin_manager,1,1,1,0
+access_sn_ministry_admin,sn.ministry.admin,model_sn_ministry,group_sn_admin_admin,1,1,1,1
+access_sn_direction_user,sn.direction.user,model_sn_direction,group_sn_admin_user,1,0,0,0
+access_sn_direction_manager,sn.direction.manager,model_sn_direction,group_sn_admin_manager,1,1,1,0
+access_sn_direction_admin,sn.direction.admin,model_sn_direction,group_sn_admin_admin,1,1,1,1
+access_sn_service_user,sn.service.user,model_sn_service,group_sn_admin_user,1,0,0,0
+access_sn_service_manager,sn.service.manager,model_sn_service,group_sn_admin_manager,1,1,1,0
+access_sn_service_admin,sn.service.admin,model_sn_service,group_sn_admin_admin,1,1,1,1
+access_sn_agent_user,sn.agent.user,model_sn_agent,group_sn_admin_user,1,0,0,0
+access_sn_agent_manager,sn.agent.manager,model_sn_agent,group_sn_admin_manager,1,1,1,0
+access_sn_agent_admin,sn.agent.admin,model_sn_agent,group_sn_admin_admin,1,1,1,1

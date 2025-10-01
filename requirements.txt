@@ -1,0 +1,18 @@
+# Extraction et manipulation de fichiers Excel
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# Validation et nettoyage de données
+email-validator>=2.0.0
+phonenumbers>=8.13.0
+
+# Utilitaires
+python-slugify>=8.0.0
+unidecode>=1.3.0
+
+# Génération de QR codes
+qrcode>=7.4.2
+Pillow>=10.0.0
+
+# Génération de cartes (optionnel)
+folium>=0.14.0

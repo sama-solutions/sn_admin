@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- 3 Ministères de démonstration -->
+        <record id="ministry_demo_pr" model="sn.ministry">
+            <field name="name">Présidence de la République</field>
+            <field name="code">PR</field>
+            <field name="type">presidency</field>
+            <field name="address">Avenue Léopold Sédar Senghor, Dakar</field>
+            <field name="phone">+221338234500</field>
+            <field name="email">contact@presidence.sn</field>
+            <field name="website">http://www.presidence.sn</field>
+            <field name="description">Institution présidentielle de la République du Sénégal</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="ministry_demo_msas" model="sn.ministry">
+            <field name="name">Ministère de la Santé et de l'Action Sociale</field>
+            <field name="code">MSAS</field>
+            <field name="type">ministry</field>
+            <field name="address">Rue Aimé Césaire, Fann Résidence, Dakar</field>
+            <field name="phone">+221338893400</field>
+            <field name="email">contact@sante.gouv.sn</field>
+            <field name="website">http://www.sante.gouv.sn</field>
+            <field name="description">Ministère en charge de la santé publique et de l'action sociale</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="ministry_demo_men" model="sn.ministry">
+            <field name="name">Ministère de l'Éducation Nationale</field>
+            <field name="code">MEN</field>
+            <field name="type">ministry</field>
+            <field name="address">Rue Docteur Calmette, Dakar</field>
+            <field name="phone">+221338491056</field>
+            <field name="email">contact@education.gouv.sn</field>
+            <field name="website">http://www.education.gouv.sn</field>
+            <field name="description">Ministère en charge de l'éducation nationale</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- 6 Directions (2 par ministère) -->
+        <record id="direction_demo_cabinet_pr" model="sn.direction">
+            <field name="name">Cabinet de la Présidence</field>
+            <field name="code">CAB</field>
+            <field name="type">generale</field>
+            <field name="ministry_id" ref="ministry_demo_pr"/>
+            <field name="phone">+221338234510</field>
+            <field name="email">cabinet@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="direction_demo_sg_pr" model="sn.direction">
+            <field name="name">Secrétariat Général de la Présidence</field>
+            <field name="code">SG</field>
+            <field name="type">generale</field>
+            <field name="ministry_id" ref="ministry_demo_pr"/>
+            <field name="phone">+221338234520</field>
+            <field name="email">sg@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="direction_demo_dgs" model="sn.direction">
+            <field name="name">Direction Générale de la Santé</field>
+            <field name="code">DGS</field>
+            <field name="type">generale</field>
+            <field name="ministry_id" ref="ministry_demo_msas"/>
+            <field name="phone">+221338893410</field>
+            <field name="email">dgs@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="direction_demo_drh_msas" model="sn.direction">
+            <field name="name">Direction des Ressources Humaines</field>
+            <field name="code">DRH</field>
+            <field name="type">generale</field>
+            <field name="ministry_id" ref="ministry_demo_msas"/>
+            <field name="phone">+221338893420</field>
+            <field name="email">drh@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="direction_demo_dee" model="sn.direction">
+            <field name="name">Direction de l'Enseignement Élémentaire</field>
+            <field name="code">DEE</field>
+            <field name="type">generale</field>
+            <field name="ministry_id" ref="ministry_demo_men"/>
+            <field name="phone">+221338491060</field>
+            <field name="email">dee@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="direction_demo_dec" model="sn.direction">
+            <field name="name">Direction des Examens et Concours</field>
+            <field name="code">DEC</field>
+            <field name="type">generale</field>
+            <field name="ministry_id" ref="ministry_demo_men"/>
+            <field name="phone">+221338491070</field>
+            <field name="email">dec@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- 12 Services (2 par direction) -->
+        <record id="service_demo_protocole" model="sn.service">
+            <field name="name">Service du Protocole</field>
+            <field name="code">PROT</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_cabinet_pr"/>
+            <field name="phone">+221338234511</field>
+            <field name="email">protocole@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_communication" model="sn.service">
+            <field name="name">Service de la Communication</field>
+            <field name="code">COM</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_cabinet_pr"/>
+            <field name="phone">+221338234512</field>
+            <field name="email">communication@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_affaires_admin" model="sn.service">
+            <field name="name">Service des Affaires Administratives</field>
+            <field name="code">SAA</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_sg_pr"/>
+            <field name="phone">+221338234521</field>
+            <field name="email">affaires.admin@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_budget" model="sn.service">
+            <field name="name">Service du Budget</field>
+            <field name="code">BUD</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_sg_pr"/>
+            <field name="phone">+221338234522</field>
+            <field name="email">budget@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_prevention" model="sn.service">
+            <field name="name">Service de la Prévention</field>
+            <field name="code">PREV</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_dgs"/>
+            <field name="phone">+221338893411</field>
+            <field name="email">prevention@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_maladies" model="sn.service">
+            <field name="name">Service des Maladies Transmissibles</field>
+            <field name="code">SMT</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_dgs"/>
+            <field name="phone">+221338893412</field>
+            <field name="email">maladies@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_gestion_personnel" model="sn.service">
+            <field name="name">Service de la Gestion du Personnel</field>
+            <field name="code">SGP</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_drh_msas"/>
+            <field name="phone">+221338893421</field>
+            <field name="email">gestion.personnel@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_formation" model="sn.service">
+            <field name="name">Service de la Formation</field>
+            <field name="code">FORM</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_drh_msas"/>
+            <field name="phone">+221338893422</field>
+            <field name="email">formation@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_programmes" model="sn.service">
+            <field name="name">Service des Programmes</field>
+            <field name="code">PROG</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_dee"/>
+            <field name="phone">+221338491061</field>
+            <field name="email">programmes@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_inspection" model="sn.service">
+            <field name="name">Service de l'Inspection</field>
+            <field name="code">INSP</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_dee"/>
+            <field name="phone">+221338491062</field>
+            <field name="email">inspection@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_bac" model="sn.service">
+            <field name="name">Service du Baccalauréat</field>
+            <field name="code">BAC</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_dec"/>
+            <field name="phone">+221338491071</field>
+            <field name="email">bac@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="service_demo_bfem" model="sn.service">
+            <field name="name">Service du BFEM</field>
+            <field name="code">BFEM</field>
+            <field name="type">service</field>
+            <field name="direction_id" ref="direction_demo_dec"/>
+            <field name="phone">+221338491072</field>
+            <field name="email">bfem@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- 30 Agents (2-3 par service) -->
+        <!-- Service du Protocole -->
+        <record id="agent_demo_001" model="sn.agent">
+            <field name="name">Fatou NDIAYE</field>
+            <field name="first_name">Fatou</field>
+            <field name="last_name">NDIAYE</field>
+            <field name="matricule">SN-2024-000001</field>
+            <field name="function">Chef de Service du Protocole</field>
+            <field name="service_id" ref="service_demo_protocole"/>
+            <field name="work_phone">+221338234511</field>
+            <field name="work_email">fatou.ndiaye@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_002" model="sn.agent">
+            <field name="name">Moussa FALL</field>
+            <field name="first_name">Moussa</field>
+            <field name="last_name">FALL</field>
+            <field name="matricule">SN-2024-000002</field>
+            <field name="function">Agent du Protocole</field>
+            <field name="service_id" ref="service_demo_protocole"/>
+            <field name="work_phone">+221338234513</field>
+            <field name="work_email">moussa.fall@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service de la Communication -->
+        <record id="agent_demo_003" model="sn.agent">
+            <field name="name">Aïssatou DIOP</field>
+            <field name="first_name">Aïssatou</field>
+            <field name="last_name">DIOP</field>
+            <field name="matricule">SN-2024-000003</field>
+            <field name="function">Directrice de la Communication</field>
+            <field name="service_id" ref="service_demo_communication"/>
+            <field name="work_phone">+221338234512</field>
+            <field name="work_email">aissatou.diop@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_004" model="sn.agent">
+            <field name="name">Ibrahima SARR</field>
+            <field name="first_name">Ibrahima</field>
+            <field name="last_name">SARR</field>
+            <field name="matricule">SN-2024-000004</field>
+            <field name="function">Chargé de Communication</field>
+            <field name="service_id" ref="service_demo_communication"/>
+            <field name="work_phone">+221338234514</field>
+            <field name="work_email">ibrahima.sarr@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_005" model="sn.agent">
+            <field name="name">Mariama SY</field>
+            <field name="first_name">Mariama</field>
+            <field name="last_name">SY</field>
+            <field name="matricule">SN-2024-000005</field>
+            <field name="function">Assistante Communication</field>
+            <field name="service_id" ref="service_demo_communication"/>
+            <field name="work_phone">+221338234515</field>
+            <field name="work_email">mariama.sy@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service des Affaires Administratives -->
+        <record id="agent_demo_006" model="sn.agent">
+            <field name="name">Ousmane DIALLO</field>
+            <field name="first_name">Ousmane</field>
+            <field name="last_name">DIALLO</field>
+            <field name="matricule">SN-2024-000006</field>
+            <field name="function">Chef de Service</field>
+            <field name="service_id" ref="service_demo_affaires_admin"/>
+            <field name="work_phone">+221338234521</field>
+            <field name="work_email">ousmane.diallo@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_007" model="sn.agent">
+            <field name="name">Aminata KANE</field>
+            <field name="first_name">Aminata</field>
+            <field name="last_name">KANE</field>
+            <field name="matricule">SN-2024-000007</field>
+            <field name="function">Agent Administratif</field>
+            <field name="service_id" ref="service_demo_affaires_admin"/>
+            <field name="work_phone">+221338234523</field>
+            <field name="work_email">aminata.kane@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service du Budget -->
+        <record id="agent_demo_008" model="sn.agent">
+            <field name="name">Cheikh GUEYE</field>
+            <field name="first_name">Cheikh</field>
+            <field name="last_name">GUEYE</field>
+            <field name="matricule">SN-2024-000008</field>
+            <field name="function">Responsable Budget</field>
+            <field name="service_id" ref="service_demo_budget"/>
+            <field name="work_phone">+221338234522</field>
+            <field name="work_email">cheikh.gueye@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_009" model="sn.agent">
+            <field name="name">Khady SECK</field>
+            <field name="first_name">Khady</field>
+            <field name="last_name">SECK</field>
+            <field name="matricule">SN-2024-000009</field>
+            <field name="function">Contrôleur Budgétaire</field>
+            <field name="service_id" ref="service_demo_budget"/>
+            <field name="work_phone">+221338234524</field>
+            <field name="work_email">khady.seck@presidence.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service de la Prévention -->
+        <record id="agent_demo_010" model="sn.agent">
+            <field name="name">Dr. Amadou BA</field>
+            <field name="first_name">Amadou</field>
+            <field name="last_name">BA</field>
+            <field name="matricule">SN-2024-000010</field>
+            <field name="function">Médecin Chef de Service</field>
+            <field name="service_id" ref="service_demo_prevention"/>
+            <field name="work_phone">+221338893411</field>
+            <field name="work_email">amadou.ba@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_011" model="sn.agent">
+            <field name="name">Dr. Coumba DIENG</field>
+            <field name="first_name">Coumba</field>
+            <field name="last_name">DIENG</field>
+            <field name="matricule">SN-2024-000011</field>
+            <field name="function">Médecin Épidémiologiste</field>
+            <field name="service_id" ref="service_demo_prevention"/>
+            <field name="work_phone">+221338893413</field>
+            <field name="work_email">coumba.dieng@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service des Maladies Transmissibles -->
+        <record id="agent_demo_012" model="sn.agent">
+            <field name="name">Dr. Mamadou TOURE</field>
+            <field name="first_name">Mamadou</field>
+            <field name="last_name">TOURE</field>
+            <field name="matricule">SN-2024-000012</field>
+            <field name="function">Chef de Service</field>
+            <field name="service_id" ref="service_demo_maladies"/>
+            <field name="work_phone">+221338893412</field>
+            <field name="work_email">mamadou.toure@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_013" model="sn.agent">
+            <field name="name">Awa MBAYE</field>
+            <field name="first_name">Awa</field>
+            <field name="last_name">MBAYE</field>
+            <field name="matricule">SN-2024-000013</field>
+            <field name="function">Infirmière Spécialisée</field>
+            <field name="service_id" ref="service_demo_maladies"/>
+            <field name="work_phone">+221338893414</field>
+            <field name="work_email">awa.mbaye@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service de la Gestion du Personnel -->
+        <record id="agent_demo_014" model="sn.agent">
+            <field name="name">Abdoulaye SALL</field>
+            <field name="first_name">Abdoulaye</field>
+            <field name="last_name">SALL</field>
+            <field name="matricule">SN-2024-000014</field>
+            <field name="function">Chef de Service RH</field>
+            <field name="service_id" ref="service_demo_gestion_personnel"/>
+            <field name="work_phone">+221338893421</field>
+            <field name="work_email">abdoulaye.sall@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_015" model="sn.agent">
+            <field name="name">Ndèye FAYE</field>
+            <field name="first_name">Ndèye</field>
+            <field name="last_name">FAYE</field>
+            <field name="matricule">SN-2024-000015</field>
+            <field name="function">Gestionnaire RH</field>
+            <field name="service_id" ref="service_demo_gestion_personnel"/>
+            <field name="work_phone">+221338893423</field>
+            <field name="work_email">ndeye.faye@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service de la Formation -->
+        <record id="agent_demo_016" model="sn.agent">
+            <field name="name">Baba CISSE</field>
+            <field name="first_name">Baba</field>
+            <field name="last_name">CISSE</field>
+            <field name="matricule">SN-2024-000016</field>
+            <field name="function">Responsable Formation</field>
+            <field name="service_id" ref="service_demo_formation"/>
+            <field name="work_phone">+221338893422</field>
+            <field name="work_email">baba.cisse@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_017" model="sn.agent">
+            <field name="name">Seynabou THIAM</field>
+            <field name="first_name">Seynabou</field>
+            <field name="last_name">THIAM</field>
+            <field name="matricule">SN-2024-000017</field>
+            <field name="function">Chargée de Formation</field>
+            <field name="service_id" ref="service_demo_formation"/>
+            <field name="work_phone">+221338893424</field>
+            <field name="work_email">seynabou.thiam@sante.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service des Programmes -->
+        <record id="agent_demo_018" model="sn.agent">
+            <field name="name">Malick WADE</field>
+            <field name="first_name">Malick</field>
+            <field name="last_name">WADE</field>
+            <field name="matricule">SN-2024-000018</field>
+            <field name="function">Chef de Service</field>
+            <field name="service_id" ref="service_demo_programmes"/>
+            <field name="work_phone">+221338491061</field>
+            <field name="work_email">malick.wade@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_019" model="sn.agent">
+            <field name="name">Rokhaya DIAGNE</field>
+            <field name="first_name">Rokhaya</field>
+            <field name="last_name">DIAGNE</field>
+            <field name="matricule">SN-2024-000019</field>
+            <field name="function">Conseillère Pédagogique</field>
+            <field name="service_id" ref="service_demo_programmes"/>
+            <field name="work_phone">+221338491063</field>
+            <field name="work_email">rokhaya.diagne@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_020" model="sn.agent">
+            <field name="name">Alioune NDAO</field>
+            <field name="first_name">Alioune</field>
+            <field name="last_name">NDAO</field>
+            <field name="matricule">SN-2024-000020</field>
+            <field name="function">Coordonnateur Programmes</field>
+            <field name="service_id" ref="service_demo_programmes"/>
+            <field name="work_phone">+221338491064</field>
+            <field name="work_email">alioune.ndao@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service de l'Inspection -->
+        <record id="agent_demo_021" model="sn.agent">
+            <field name="name">Pape SOW</field>
+            <field name="first_name">Pape</field>
+            <field name="last_name">SOW</field>
+            <field name="matricule">SN-2024-000021</field>
+            <field name="function">Inspecteur Principal</field>
+            <field name="service_id" ref="service_demo_inspection"/>
+            <field name="work_phone">+221338491062</field>
+            <field name="work_email">pape.sow@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_022" model="sn.agent">
+            <field name="name">Yacine DIOUF</field>
+            <field name="first_name">Yacine</field>
+            <field name="last_name">DIOUF</field>
+            <field name="matricule">SN-2024-000022</field>
+            <field name="function">Inspectrice</field>
+            <field name="service_id" ref="service_demo_inspection"/>
+            <field name="work_phone">+221338491065</field>
+            <field name="work_email">yacine.diouf@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service du Baccalauréat -->
+        <record id="agent_demo_023" model="sn.agent">
+            <field name="name">Modou CAMARA</field>
+            <field name="first_name">Modou</field>
+            <field name="last_name">CAMARA</field>
+            <field name="matricule">SN-2024-000023</field>
+            <field name="function">Chef de Service Bac</field>
+            <field name="service_id" ref="service_demo_bac"/>
+            <field name="work_phone">+221338491071</field>
+            <field name="work_email">modou.camara@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_024" model="sn.agent">
+            <field name="name">Bineta NIANG</field>
+            <field name="first_name">Bineta</field>
+            <field name="last_name">NIANG</field>
+            <field name="matricule">SN-2024-000024</field>
+            <field name="function">Coordonnatrice Examens</field>
+            <field name="service_id" ref="service_demo_bac"/>
+            <field name="work_phone">+221338491073</field>
+            <field name="work_email">bineta.niang@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_025" model="sn.agent">
+            <field name="name">Saliou DRAME</field>
+            <field name="first_name">Saliou</field>
+            <field name="last_name">DRAME</field>
+            <field name="matricule">SN-2024-000025</field>
+            <field name="function">Agent Examens</field>
+            <field name="service_id" ref="service_demo_bac"/>
+            <field name="work_phone">+221338491074</field>
+            <field name="work_email">saliou.drame@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Service du BFEM -->
+        <record id="agent_demo_026" model="sn.agent">
+            <field name="name">Oumar SYLLA</field>
+            <field name="first_name">Oumar</field>
+            <field name="last_name">SYLLA</field>
+            <field name="matricule">SN-2024-000026</field>
+            <field name="function">Chef de Service BFEM</field>
+            <field name="service_id" ref="service_demo_bfem"/>
+            <field name="work_phone">+221338491072</field>
+            <field name="work_email">oumar.sylla@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_027" model="sn.agent">
+            <field name="name">Astou BADIANE</field>
+            <field name="first_name">Astou</field>
+            <field name="last_name">BADIANE</field>
+            <field name="matricule">SN-2024-000027</field>
+            <field name="function">Coordonnatrice BFEM</field>
+            <field name="service_id" ref="service_demo_bfem"/>
+            <field name="work_phone">+221338491075</field>
+            <field name="work_email">astou.badiane@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_028" model="sn.agent">
+            <field name="name">Lamine DIATTA</field>
+            <field name="first_name">Lamine</field>
+            <field name="last_name">DIATTA</field>
+            <field name="matricule">SN-2024-000028</field>
+            <field name="function">Agent BFEM</field>
+            <field name="service_id" ref="service_demo_bfem"/>
+            <field name="work_phone">+221338491076</field>
+            <field name="work_email">lamine.diatta@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_029" model="sn.agent">
+            <field name="name">Sokhna SARR</field>
+            <field name="first_name">Sokhna</field>
+            <field name="last_name">SARR</field>
+            <field name="matricule">SN-2024-000029</field>
+            <field name="function">Secrétaire BFEM</field>
+            <field name="service_id" ref="service_demo_bfem"/>
+            <field name="work_phone">+221338491077</field>
+            <field name="work_email">sokhna.sarr@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+        <record id="agent_demo_030" model="sn.agent">
+            <field name="name">Babacar LO</field>
+            <field name="first_name">Babacar</field>
+            <field name="last_name">LO</field>
+            <field name="matricule">SN-2024-000030</field>
+            <field name="function">Assistant BFEM</field>
+            <field name="service_id" ref="service_demo_bfem"/>
+            <field name="work_phone">+221338491078</field>
+            <field name="work_email">babacar.lo@education.gouv.sn</field>
+            <field name="state">active</field>
+        </record>
+
+    </data>
+</odoo>
