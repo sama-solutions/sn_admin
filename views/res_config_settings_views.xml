@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue de configuration pour SN Admin -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sn.admin</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="SN Admin" string="SN Admin" data-key="sn_admin">
+                    <h2>Organigramme Administration Sénégalaise</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sn_admin_auto_sync"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="sn_admin_auto_sync"/>
+                                <div class="text-muted">
+                                    Synchroniser automatiquement les agents avec le module RH
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sn_admin_public_access"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="sn_admin_public_access"/>
+                                <div class="text-muted">
+                                    Permettre l'accès public à l'organigramme sur le site web
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sn_admin_qr_code_size"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="sn_admin_qr_code_size"/>
+                                <div class="text-muted">
+                                    Taille des QR codes en pixels (par défaut: 150)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action pour ouvrir les paramètres -->
+    <record id="action_sn_admin_config" model="ir.actions.act_window">
+        <field name="name">Paramètres SN Admin</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'sn_admin'}</field>
+    </record>
+</odoo>

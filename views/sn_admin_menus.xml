@@ -92,7 +92,10 @@
               groups="group_sn_admin_admin"
               sequence="100"/>
 
-    <!-- Note: Pas de menu Paramètres car base.action_res_config n'existe plus dans Odoo 18 -->
-    <!-- Les paramètres peuvent être ajoutés via res.config.settings si nécessaire -->
+    <menuitem id="menu_sn_admin_settings"
+              name="Paramètres"
+              parent="menu_sn_admin_config"
+              action="action_sn_admin_config"
+              sequence="10"/>
 
 </odoo>

@@ -32,6 +32,7 @@
         'views/sn_agent_views.xml',
         'views/hr_employee_views.xml',
         'views/hr_department_views.xml',
+        'views/res_config_settings_views.xml',
         'views/sn_search_views.xml',
         'views/sn_dashboard.xml',
         
