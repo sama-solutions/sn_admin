@@ -72,6 +72,11 @@ class Ministry(models.Model):
         inverse_name='ministry_id',
         string='Directions',
     )
+    category_ids = fields.One2many(
+        comodel_name='sn.category',
+        inverse_name='ministry_id',
+        string='Catégories',
+    )
     department_id = fields.Many2one(
         comodel_name='hr.department',
         string='Département RH',
@@ -97,6 +102,11 @@ class Ministry(models.Model):
     public_show_address = fields.Boolean(string='Afficher Adresse', default=True)
     
     # Champs calculés
+    category_count = fields.Integer(
+        string='Nombre de Catégories',
+        compute='_compute_category_count',
+        store=True,
+    )
     direction_count = fields.Integer(
         string='Nombre de Directions',
         compute='_compute_direction_count',
@@ -124,6 +134,11 @@ class Ministry(models.Model):
         ('name_unique', 'UNIQUE(LOWER(name))', 'Le nom doit être unique'),
     ]
 
+    @api.depends('category_ids')
+    def _compute_category_count(self):
+        for record in self:
+            record.category_count = len(record.category_ids)
+    
     @api.depends('direction_ids')
     def _compute_direction_count(self):
         for record in self:
@@ -172,10 +187,10 @@ class Ministry(models.Model):
     def action_view_directions(self):
         self.ensure_one()
         return {
-            'name': 'Directions',
+            'name': f'Directions - {self.name}',
             'type': 'ir.actions.act_window',
             'res_model': 'sn.direction',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form,kanban',
             'domain': [('ministry_id', '=', self.id)],
             'context': {'default_ministry_id': self.id},
         }
@@ -183,10 +198,10 @@ class Ministry(models.Model):
     def action_view_services(self):
         self.ensure_one()
         return {
-            'name': 'Services',
+            'name': f'Services - {self.name}',
             'type': 'ir.actions.act_window',
             'res_model': 'sn.service',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form,kanban',
             'domain': [('ministry_id', '=', self.id)],
             'context': {'default_ministry_id': self.id},
         }
@@ -194,10 +209,22 @@ class Ministry(models.Model):
     def action_view_agents(self):
         self.ensure_one()
         return {
-            'name': 'Agents',
+            'name': f'Agents - {self.name}',
             'type': 'ir.actions.act_window',
             'res_model': 'sn.agent',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form,kanban',
+            'domain': [('ministry_id', '=', self.id)],
+            'context': {'default_ministry_id': self.id},
+        }
+    
+    def action_view_categories(self):
+        """Voir les catégories du ministère"""
+        self.ensure_one()
+        return {
+            'name': f'Catégories - {self.name}',
+            'type': 'ir.actions.act_window',
+            'res_model': 'sn.category',
+            'view_mode': 'list,form,kanban',
             'domain': [('ministry_id', '=', self.id)],
             'context': {'default_ministry_id': self.id},
         }

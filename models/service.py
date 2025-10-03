@@ -173,12 +173,16 @@ class Service(models.Model):
     def action_view_agents(self):
         self.ensure_one()
         return {
-            'name': 'Agents',
+            'name': f'Agents - {self.name}',
             'type': 'ir.actions.act_window',
             'res_model': 'sn.agent',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form,kanban',
             'domain': [('service_id', '=', self.id)],
-            'context': {'default_service_id': self.id},
+            'context': {
+                'default_service_id': self.id,
+                'default_direction_id': self.direction_id.id,
+                'default_ministry_id': self.ministry_id.id,
+            },
         }
 
     def action_create_hr_department(self):

@@ -174,18 +174,52 @@
                         <p><t t-esc="ministry.description"/></p>
                     </t>
 
-                    <h3 class="mt-4">Directions (<t t-esc="len(directions)"/>)</h3>
-                    <div class="list-group">
-                        <t t-foreach="directions" t-as="direction">
-                            <a t-attf-href="/organigramme/direction/#{direction.id}" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1"><t t-esc="direction.name"/></h5>
-                                    <small><t t-esc="direction.service_count"/> services</small>
+                    <!-- Affichage par catégories si elles existent -->
+                    <t t-if="categories">
+                        <h3 class="mt-4">Structure Organisationnelle</h3>
+                        <t t-foreach="categories" t-as="category">
+                            <div class="card mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">
+                                        <a t-attf-href="/organigramme/categorie/#{category.id}" class="text-white text-decoration-none">
+                                            <i class="fa fa-folder-open"/> <t t-esc="category.name"/>
+                                            <span class="badge bg-light text-dark ms-2"><t t-esc="category.direction_count"/> directions</span>
+                                        </a>
+                                    </h4>
                                 </div>
-                                <p class="mb-1"><t t-esc="direction.code"/> - <t t-esc="dict(direction._fields['type'].selection).get(direction.type)"/></p>
-                            </a>
+                                <div class="card-body">
+                                    <div class="list-group">
+                                        <t t-foreach="category.direction_ids.filtered(lambda d: d.active and d.state == 'active')" t-as="direction">
+                                            <a t-attf-href="/organigramme/direction/#{direction.id}" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1"><t t-esc="direction.name"/></h5>
+                                                    <small><t t-esc="direction.service_count"/> services</small>
+                                                </div>
+                                                <p class="mb-1"><t t-esc="direction.code"/> - <t t-esc="dict(direction._fields['type'].selection).get(direction.type)"/></p>
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
                         </t>
-                    </div>
+                    </t>
+
+                    <!-- Directions sans catégorie -->
+                    <t t-set="directions_without_category" t-value="directions.filtered(lambda d: not d.category_id)"/>
+                    <t t-if="directions_without_category">
+                        <h3 class="mt-4">Directions (<t t-esc="len(directions_without_category)"/>)</h3>
+                        <div class="list-group">
+                            <t t-foreach="directions_without_category" t-as="direction">
+                                <a t-attf-href="/organigramme/direction/#{direction.id}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1"><t t-esc="direction.name"/></h5>
+                                        <small><t t-esc="direction.service_count"/> services</small>
+                                    </div>
+                                    <p class="mb-1"><t t-esc="direction.code"/> - <t t-esc="dict(direction._fields['type'].selection).get(direction.type)"/></p>
+                                </a>
+                            </t>
+                        </div>
+                    </t>
                 </div>
             </div>
         </t>
@@ -201,6 +235,9 @@
                             <li class="breadcrumb-item"><a href="/organigramme">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="/organigramme/ministeres">Ministères</a></li>
                             <li class="breadcrumb-item"><a t-attf-href="/organigramme/ministere/#{direction.ministry_id.id}"><t t-esc="direction.ministry_id.name"/></a></li>
+                            <t t-if="direction.category_id">
+                                <li class="breadcrumb-item"><a t-attf-href="/organigramme/categorie/#{direction.category_id.id}"><t t-esc="direction.category_id.name"/></a></li>
+                            </t>
                             <li class="breadcrumb-item active"><t t-esc="direction.name"/></li>
                         </ol>
                     </nav>
@@ -247,6 +284,9 @@
                             <li class="breadcrumb-item"><a href="/organigramme">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="/organigramme/ministeres">Ministères</a></li>
                             <li class="breadcrumb-item"><a t-attf-href="/organigramme/ministere/#{service.ministry_id.id}"><t t-esc="service.ministry_id.name"/></a></li>
+                            <t t-if="service.direction_id.category_id">
+                                <li class="breadcrumb-item"><a t-attf-href="/organigramme/categorie/#{service.direction_id.category_id.id}"><t t-esc="service.direction_id.category_id.name"/></a></li>
+                            </t>
                             <li class="breadcrumb-item"><a t-attf-href="/organigramme/direction/#{service.direction_id.id}"><t t-esc="service.direction_id.name"/></a></li>
                             <li class="breadcrumb-item active"><t t-esc="service.name"/></li>
                         </ol>
@@ -303,6 +343,9 @@
                             <li class="breadcrumb-item"><a href="/organigramme">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="/organigramme/ministeres">Ministères</a></li>
                             <li class="breadcrumb-item"><a t-attf-href="/organigramme/ministere/#{agent.ministry_id.id}"><t t-esc="agent.ministry_id.name"/></a></li>
+                            <t t-if="agent.direction_id.category_id">
+                                <li class="breadcrumb-item"><a t-attf-href="/organigramme/categorie/#{agent.direction_id.category_id.id}"><t t-esc="agent.direction_id.category_id.name"/></a></li>
+                            </t>
                             <li class="breadcrumb-item"><a t-attf-href="/organigramme/direction/#{agent.direction_id.id}"><t t-esc="agent.direction_id.name"/></a></li>
                             <li class="breadcrumb-item"><a t-attf-href="/organigramme/service/#{agent.service_id.id}"><t t-esc="agent.service_id.name"/></a></li>
                             <li class="breadcrumb-item active"><t t-esc="agent.name"/></li>
@@ -417,6 +460,73 @@
                             <p class="alert alert-info">Aucun résultat trouvé.</p>
                         </t>
                     </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Template: Organigramme interactif public -->
+    <template id="organigramme_tree" name="Organigramme Interactif">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <div class="container mt-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/organigramme">Accueil</a></li>
+                            <li class="breadcrumb-item active">Organigramme</li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="mb-4" style="color: #00853F;">Organigramme interactif</h1>
+
+                    <!-- Conteneur utilisé par sn_admin_public.js -->
+                    <div id="orgchart-container" t-att-data-ministry-id="ministry_id" class="position-relative" style="min-height: 400px;"></div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Template: Détails d'une catégorie -->
+    <template id="organigramme_category_detail" name="Détails Catégorie">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <div class="container mt-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/organigramme">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="/organigramme/ministeres">Ministères</a></li>
+                            <li class="breadcrumb-item"><a t-attf-href="/organigramme/ministere/#{category.ministry_id.id}"><t t-esc="category.ministry_id.name"/></a></li>
+                            <li class="breadcrumb-item active"><t t-esc="category.name"/></li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="mb-4" style="color: #00853F;">
+                        <i class="fa fa-folder-open"/> <t t-esc="category.name"/>
+                    </h1>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <p><strong>Code:</strong> <t t-esc="category.code or 'N/A'"/></p>
+                            <p><strong>Ministère:</strong> <t t-esc="category.ministry_id.name"/></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Nombre de directions:</strong> <t t-esc="category.direction_count"/></p>
+                            <p><strong>Nombre de services:</strong> <t t-esc="category.service_count"/></p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-4">Directions (<t t-esc="len(directions)"/>)</h3>
+                    <div class="list-group">
+                        <t t-foreach="directions" t-as="direction">
+                            <a t-attf-href="/organigramme/direction/#{direction.id}" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><t t-esc="direction.name"/></h5>
+                                    <small><t t-esc="direction.service_count"/> services</small>
+                                </div>
+                                <p class="mb-1"><t t-esc="direction.code"/> - <t t-esc="dict(direction._fields['type'].selection).get(direction.type)"/></p>
+                            </a>
+                        </t>
+                    </div>
                 </div>
             </div>
         </t>

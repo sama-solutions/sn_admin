@@ -52,6 +52,13 @@ class Direction(models.Model):
         ondelete='cascade',
         index=True,
     )
+    category_id = fields.Many2one(
+        comodel_name='sn.category',
+        string='Catégorie',
+        ondelete='set null',
+        index=True,
+        help="Catégorie principale (Cabinet, Secrétariat général, Directions, Autres administrations)",
+    )
     manager_id = fields.Many2one(
         comodel_name='hr.employee',
         string='Responsable',
@@ -183,23 +190,23 @@ class Direction(models.Model):
     def action_view_services(self):
         self.ensure_one()
         return {
-            'name': 'Services',
+            'name': f'Services - {self.name}',
             'type': 'ir.actions.act_window',
             'res_model': 'sn.service',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form,kanban',
             'domain': [('direction_id', '=', self.id)],
-            'context': {'default_direction_id': self.id},
+            'context': {'default_direction_id': self.id, 'default_ministry_id': self.ministry_id.id},
         }
 
     def action_view_agents(self):
         self.ensure_one()
         return {
-            'name': 'Agents',
+            'name': f'Agents - {self.name}',
             'type': 'ir.actions.act_window',
             'res_model': 'sn.agent',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form,kanban',
             'domain': [('direction_id', '=', self.id)],
-            'context': {'default_direction_id': self.id},
+            'context': {'default_direction_id': self.id, 'default_ministry_id': self.ministry_id.id},
         }
 
     def action_create_hr_department(self):

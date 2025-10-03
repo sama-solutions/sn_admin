@@ -1,0 +1,3 @@
+external_id,name,code,type,ministry_code,ministry_id/id,region,manager_name,phone,email,address,description
+direction_dgs,Direction Générale De La Santé,DGS,generale,MSAS,ministry_msas,Dakar,Dr. Amadou DIOP,"+221 33 821 00 00",dgs@sante.gouv.sn,"Rue X, Dakar","Missions de la direction"
+direction_sg,Secrétariat Général,SG,technique,MSAS,ministry_msas,,,"+221 33 821 00 01",sg@sante.gouv.sn,,

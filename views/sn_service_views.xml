@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Vue Tree -->
-    <record id="sn_service_view_tree" model="ir.ui.view">
-        <field name="name">sn.service.tree</field>
+    <!-- Vue List -->
+    <record id="sn_service_view_list" model="ir.ui.view">
+        <field name="name">sn.service.list</field>
         <field name="model">sn.service</field>
         <field name="arch" type="xml">
             <list string="Services" decoration-muted="state == 'archived'" decoration-info="state == 'draft'" multi_edit="1">
@@ -132,7 +132,7 @@
         <field name="name">sn.service.kanban</field>
         <field name="model">sn.service</field>
         <field name="arch" type="xml">
-            <kanban class="o_kanban_mobile" default_group_by="direction_id">
+            <kanban class="o_kanban_mobile">
                 <field name="name"/>
                 <field name="code"/>
                 <field name="type"/>
@@ -141,22 +141,23 @@
                 <field name="state"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_card oe_kanban_global_click #{record.type.raw_value == 'service' ? 'oe_kanban_color_4' : record.type.raw_value == 'bureau' ? 'oe_kanban_color_6' : record.type.raw_value == 'cellule' ? 'oe_kanban_color_8' : 'oe_kanban_color_9'}">
-                            <div class="oe_kanban_content">
-                                <div class="o_kanban_record_top">
-                                    <div class="o_kanban_record_headings">
-                                        <strong class="o_kanban_record_title"><field name="name"/></strong>
-                                        <div class="o_kanban_record_subtitle">
-                                            <field name="code"/> - <field name="type"/>
-                                        </div>
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top mb-2">
+                                    <strong class="o_kanban_record_title"><t t-esc="record.name.value"/></strong>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <div><field name="code"/> - <field name="type"/></div>
+                                    <div class="text-muted">
+                                        <i class="fa fa-building"/> <t t-esc="record.direction_id.value"/>
                                     </div>
                                 </div>
-                                <div class="o_kanban_record_bottom">
+                                <div class="o_kanban_record_bottom mt-2">
                                     <div class="oe_kanban_bottom_left">
-                                        <span><i class="fa fa-users"/> <field name="agent_count"/> Agents</span>
+                                        <span class="badge badge-pill badge-primary"><i class="fa fa-users"/> <t t-esc="record.agent_count.value"/> Agents</span>
                                     </div>
                                     <div class="oe_kanban_bottom_right">
-                                        <field name="state" widget="label_selection" options="{'classes': {'draft': 'info', 'active': 'success', 'archived': 'default'}}"/>
+                                        <field name="state" widget="label_selection" options="{'classes': {'draft': 'warning', 'active': 'success', 'archived': 'secondary'}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +196,7 @@
     <record id="sn_service_action" model="ir.actions.act_window">
         <field name="name">Services</field>
         <field name="res_model">sn.service</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">list,form,kanban</field>
         <field name="context">{'search_default_active': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

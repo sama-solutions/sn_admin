@@ -1,0 +1,3 @@
+external_id,name,code,type,address,phone,email,website,description
+ministry_msas,Ministère De La Santé Et De L'Action Sociale,MSAS,ministry,"Fann Résidence, Dakar","+221 33 823 00 50",contact@sante.gouv.sn,http://sante.gouv.sn,"Système de santé publique et action sociale"
+ministry_pr,Présidence De La République,PR,presidency,"Avenue Léopold Sédar Senghor, Dakar","+221 33 889 20 00",contact@presidence.sn,http://presidence.sn,"Institution de la Présidence"

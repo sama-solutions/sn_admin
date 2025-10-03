@@ -60,31 +60,62 @@ export class OrgChartWidget extends Component {
         const container = this.el.querySelector("#orgchart-container");
         if (!container || !this.state.data) return;
 
-        // Vérifier si OrgChart.js est chargé
-        if (typeof $ === 'undefined' || typeof $.fn.orgchart === 'undefined') {
-            console.error("OrgChart.js n'est pas chargé");
-            this.state.error = "Bibliothèque OrgChart.js manquante";
-            return;
+        // Rendu DOM simple (OWL natif, sans jQuery)
+        container.innerHTML = '';
+        const tree = this._buildTreeElement(this.state.data);
+        container.appendChild(tree);
+    }
+
+    _buildTreeElement(node) {
+        const ul = document.createElement('ul');
+        ul.className = 'sn-org-ul list-unstyled';
+
+        const li = document.createElement('li');
+        li.className = 'sn-org-li mb-2';
+
+        const title = document.createElement('div');
+        title.className = 'sn-org-node d-flex align-items-center gap-2';
+        title.style.cursor = 'pointer';
+
+        const name = document.createElement('span');
+        name.textContent = node.name || '';
+        name.className = 'fw-semibold';
+        title.appendChild(name);
+
+        if (node.title) {
+            const badge = document.createElement('span');
+            badge.textContent = node.title;
+            badge.className = 'badge text-bg-secondary';
+            title.appendChild(badge);
         }
 
-        // Configuration OrgChart.js
-        $(container).orgchart({
-            data: this.state.data,
-            nodeContent: 'title',
-            pan: true,
-            zoom: true,
-            depth: 3,
-            exportButton: true,
-            exportFilename: 'organigramme_senegal',
-            nodeTemplate: this.getNodeTemplate.bind(this),
+        if (node.children_count) {
+            const count = document.createElement('span');
+            count.textContent = `${node.children_count}`;
+            count.className = 'badge text-bg-info';
+            title.appendChild(count);
+        }
+
+        title.addEventListener('click', () => {
+            if (node.model && node.id) {
+                this.openNodeRecord(node.model, node.id);
+            }
         });
 
-        // Gérer les clics sur les nœuds
-        $(container).on('click', '.node', (event) => {
-            const nodeId = $(event.currentTarget).data('node-id');
-            const nodeType = $(event.currentTarget).data('node-type');
-            this.openNodeRecord(nodeType, nodeId);
-        });
+        li.appendChild(title);
+
+        if (Array.isArray(node.children) && node.children.length) {
+            const childrenUl = document.createElement('ul');
+            childrenUl.className = 'sn-org-children list-unstyled ps-3 ms-2 border-start';
+            for (const child of node.children) {
+                const childTree = this._buildTreeElement(child);
+                childrenUl.appendChild(childTree.firstChild);
+            }
+            li.appendChild(childrenUl);
+        }
+
+        ul.appendChild(li);
+        return ul;
     }
 
     /**
@@ -156,20 +187,16 @@ export class OrgChartWidget extends Component {
      * Exporter l'organigramme en PNG
      */
     exportPNG() {
-        const container = this.el.querySelector("#orgchart-container");
-        if (container && typeof $.fn.orgchart !== 'undefined') {
-            $(container).orgchart('export', 'organigramme_senegal.png');
-        }
+        // Fallback sans dépendance: utiliser la fonction d'impression du navigateur
+        window.print();
     }
 
     /**
      * Exporter l'organigramme en PDF
      */
     exportPDF() {
-        const container = this.el.querySelector("#orgchart-container");
-        if (container && typeof $.fn.orgchart !== 'undefined') {
-            $(container).orgchart('export', 'organigramme_senegal.pdf');
-        }
+        // Fallback sans dépendance: utiliser la fonction d'impression du navigateur
+        window.print();
     }
 
     /**

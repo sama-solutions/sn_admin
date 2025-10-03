@@ -50,9 +50,9 @@
         </field>
     </record>
 
-    <!-- Hériter de la vue Tree hr.employee -->
-    <record id="hr_employee_tree_sn_admin" model="ir.ui.view">
-        <field name="name">hr.employee.tree.sn.admin</field>
+    <!-- Hériter de la vue List hr.employee -->
+    <record id="hr_employee_list_sn_admin" model="ir.ui.view">
+        <field name="name">hr.employee.list.sn.admin</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_tree"/>
         <field name="arch" type="xml">

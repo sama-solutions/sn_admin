@@ -1,0 +1,3 @@
+external_id,name,code,type,direction_code,direction_id/id,manager_name,phone,email,address,description
+service_srh,Service Des Ressources Humaines,SRH,service,DGS,direction_dgs,Mme Fatou SALL,"+221 33 821 00 10",srh@sante.gouv.sn,"Bâtiment A, 2ème étage","Gestion des ressources humaines"
+service_baj,Bureau Accueil Juridique,BAJ,bureau,DGS,direction_dgs,,"+221 33 821 00 11",baj@sante.gouv.sn,,

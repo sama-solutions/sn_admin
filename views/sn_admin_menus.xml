@@ -19,6 +19,12 @@
               action="sn_ministry_action"
               sequence="10"/>
 
+    <menuitem id="menu_sn_admin_category"
+              name="Catégories"
+              parent="menu_sn_admin_organigramme"
+              action="sn_category_action"
+              sequence="15"/>
+
     <menuitem id="menu_sn_admin_direction"
               name="Directions"
               parent="menu_sn_admin_organigramme"

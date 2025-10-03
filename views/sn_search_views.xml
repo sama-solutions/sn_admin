@@ -26,8 +26,8 @@
     </record>
 
     <!-- Vue des résultats de recherche -->
-    <record id="sn_admin_search_result_tree" model="ir.ui.view">
-        <field name="name">sn.admin.search.result.tree</field>
+    <record id="sn_admin_search_result_list" model="ir.ui.view">
+        <field name="name">sn.admin.search.result.list</field>
         <field name="model">sn.agent</field>
         <field name="arch" type="xml">
             <list string="Résultats de recherche" create="false" edit="false">
@@ -46,9 +46,9 @@
     <record id="sn_admin_search_action" model="ir.actions.act_window">
         <field name="name">Recherche d'interlocuteur</field>
         <field name="res_model">sn.agent</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'tree', 'view_id': ref('sn_admin_search_result_tree')}),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('sn_admin_search_result_list')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('sn_agent_view_form')})]"/>
         <field name="domain">[('active', '=', True), ('state', '=', 'active')]</field>
         <field name="help" type="html">

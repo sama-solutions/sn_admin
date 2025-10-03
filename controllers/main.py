@@ -53,20 +53,49 @@ class SNAdminController(http.Controller):
     def ministry(self, ministry_id, **kw):
         """Détails d'un ministère"""
         Ministry = request.env['sn.ministry'].sudo()
+        Category = request.env['sn.category'].sudo()
         
         ministry = Ministry.browse(ministry_id)
         
         if not ministry.exists() or not ministry.active or ministry.state != 'active':
             return request.render('website.404')
         
+        # Récupérer les catégories du ministère
+        categories = Category.search([
+            ('ministry_id', '=', ministry_id),
+            ('active', '=', True),
+            ('state', '=', 'active')
+        ], order='name')
+        
+        # Récupérer les directions (avec et sans catégorie)
         directions = ministry.direction_ids.filtered(lambda d: d.active and d.state == 'active')
         
         values = {
             'ministry': ministry,
+            'categories': categories,
             'directions': directions,
         }
         
         return request.render('sn_admin.organigramme_ministry_detail', values)
+
+    @http.route('/organigramme/categorie/<int:category_id>', type='http', auth='public', website=True)
+    def category(self, category_id, **kw):
+        """Détails d'une catégorie"""
+        Category = request.env['sn.category'].sudo()
+        
+        category = Category.browse(category_id)
+        
+        if not category.exists() or not category.active or category.state != 'active':
+            return request.render('website.404')
+        
+        directions = category.direction_ids.filtered(lambda d: d.active and d.state == 'active')
+        
+        values = {
+            'category': category,
+            'directions': directions,
+        }
+        
+        return request.render('sn_admin.organigramme_category_detail', values)
 
     @http.route('/organigramme/direction/<int:direction_id>', type='http', auth='public', website=True)
     def direction(self, direction_id, **kw):
@@ -295,14 +324,35 @@ class SNAdminController(http.Controller):
             
             # Ajouter les enfants selon le type
             if model_type == 'ministry':
+                # Niveau 2: Catégories
+                Category = request.env['sn.category'].sudo()
+                categories = Category.search([
+                    ('ministry_id', '=', record.id),
+                    ('active', '=', True),
+                    ('state', '=', 'active')
+                ])
+                
+                if categories:
+                    node['children_count'] = len(categories)
+                    for category in categories:
+                        node['children'].append(build_node(category, 'category'))
+                else:
+                    # Si pas de catégories, afficher directement les directions
+                    node['children_count'] = len(record.direction_ids)
+                    for direction in record.direction_ids.filtered(lambda d: d.active and d.state == 'active'):
+                        node['children'].append(build_node(direction, 'direction'))
+            elif model_type == 'category':
+                # Niveau 3: Directions de la catégorie
                 node['children_count'] = len(record.direction_ids)
                 for direction in record.direction_ids.filtered(lambda d: d.active and d.state == 'active'):
                     node['children'].append(build_node(direction, 'direction'))
             elif model_type == 'direction':
+                # Niveau 4: Services
                 node['children_count'] = len(record.service_ids)
                 for service in record.service_ids.filtered(lambda s: s.active and s.state == 'active'):
                     node['children'].append(build_node(service, 'service'))
             elif model_type == 'service':
+                # Niveau 5: Agents
                 node['children_count'] = len(record.agent_ids)
                 # Limiter les agents affichés pour la performance
                 for agent in record.agent_ids.filtered(lambda a: a.active and a.state == 'active')[:10]:

@@ -1,4 +1,5 @@
 from . import ministry
+from . import category
 from . import direction
 from . import service
 from . import agent

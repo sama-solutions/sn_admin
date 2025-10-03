@@ -27,9 +27,9 @@
         </field>
     </record>
 
-    <!-- Hériter de la vue Tree hr.department -->
-    <record id="hr_department_tree_sn_admin" model="ir.ui.view">
-        <field name="name">hr.department.tree.sn.admin</field>
+    <!-- Hériter de la vue List hr.department -->
+    <record id="hr_department_list_sn_admin" model="ir.ui.view">
+        <field name="name">hr.department.list.sn.admin</field>
         <field name="model">hr.department</field>
         <field name="inherit_id" ref="hr.view_department_tree"/>
         <field name="arch" type="xml">

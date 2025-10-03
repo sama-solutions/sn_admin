@@ -5,6 +5,9 @@ access_sn_ministry_admin,sn.ministry.admin,model_sn_ministry,group_sn_admin_admi
 access_sn_direction_user,sn.direction.user,model_sn_direction,group_sn_admin_user,1,0,0,0
 access_sn_direction_manager,sn.direction.manager,model_sn_direction,group_sn_admin_manager,1,1,1,0
 access_sn_direction_admin,sn.direction.admin,model_sn_direction,group_sn_admin_admin,1,1,1,1
+access_sn_category_user,sn.category.user,model_sn_category,group_sn_admin_user,1,0,0,0
+access_sn_category_manager,sn.category.manager,model_sn_category,group_sn_admin_manager,1,1,1,0
+access_sn_category_admin,sn.category.admin,model_sn_category,group_sn_admin_admin,1,1,1,1
 access_sn_service_user,sn.service.user,model_sn_service,group_sn_admin_user,1,0,0,0
 access_sn_service_manager,sn.service.manager,model_sn_service,group_sn_admin_manager,1,1,1,0
 access_sn_service_admin,sn.service.admin,model_sn_service,group_sn_admin_admin,1,1,1,1
