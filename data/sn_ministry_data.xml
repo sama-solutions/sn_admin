@@ -1,19 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <!-- Placeholder file for ministry data -->
-        <!-- This file should be populated with actual ministry data from normalized CSV -->
-        <!-- Format example:
-        <record id="ministry_msas" model="sn.ministry">
-            <field name="name">Ministère de la Santé et de l'Action Sociale</field>
-            <field name="code">MSAS</field>
+        <record id="sn_min_ministere_de_l_energie_du_petrole_et_des_mines" model="sn.ministry">
+            <field name="name">MINISTERE DE L'ÉNERGIE, DU PÉTROLE ET DES MINES</field>
+            <field name="code">MDLDPEDM</field>
             <field name="type">ministry</field>
-            <field name="address">Rue Aimé Césaire, Dakar</field>
-            <field name="phone">+221 33 889 34 00</field>
-            <field name="email">contact@sante.gouv.sn</field>
-            <field name="website">http://www.sante.gouv.sn</field>
             <field name="state">active</field>
         </record>
-        -->
+        <record id="sn_min_ministere_de_la_culture_de_l_artisanat_et_du_tourisme" model="sn.ministry">
+            <field name="name">MINISTERE DE LA CULTURE, DE L’ARTISANAT ET DU TOURISME</field>
+            <field name="code">MDLCDLEDT</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_la_jeunesse_et_des_sports" model="sn.ministry">
+            <field name="name">MINISTERE DE LA JEUNESSE ET DES SPORTS</field>
+            <field name="code">MDLJEDS</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_des_finances_et_du_budget" model="sn.ministry">
+            <field name="name">MINISTERE DES FINANCES ET DU BUDGET</field>
+            <field name="code">MDFEDB</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_des_infrastructures" model="sn.ministry">
+            <field name="name">MINISTERE DES INFRASTRUCTURES</field>
+            <field name="code">MINDESINF</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_la_famille_de_l_action_sociale_et_des_solidarites" model="sn.ministry">
+            <field name="name">MINISTÈRE DE LA FAMILLE, DE L’ACTION SOCIALE ET DES SOLIDARITES</field>
+            <field name="code">MDLFDLSEDS</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_la_justice" model="sn.ministry">
+            <field name="name">MINISTÈRE DE LA JUSTICE</field>
+            <field name="code">MDLJ</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_la_microfinance_de_l_economie_sociale_et_solidaire" model="sn.ministry">
+            <field name="name">MINISTÈRE DE LA MICROFINANCE, DE L’ECONOMIE SOCIALE ET SOLIDAIRE</field>
+            <field name="code">MDLMDLSES</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_la_sante_et_de_l_hygiene_publique" model="sn.ministry">
+            <field name="name">MINISTÈRE DE LA SANTE ET DE L’HYGIENE PUBLIQUE</field>
+            <field name="code">MDLSEDLP</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_agriculture_de_la_souverainete_alimentaire_et_de" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’AGRICULTURE, DE LA SOUVERAINETÉ ALIMENTAIRE ET DE</field>
+            <field name="code">MDLDLSAED</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_economie_du_plan_et_de_la_cooperation" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’ECONOMIE, DU PLAN ET DE LA COOPÉRATION</field>
+            <field name="code">MDLDPEDLC</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_education_nationale" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’EDUCATION NATIONALE</field>
+            <field name="code">MDLN</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_emploi_et_de_la_formation_professionnelle_et_technique" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’EMPLOI ET DE LA FORMATION PROFESSIONNELLE ET TECHNIQUE</field>
+            <field name="code">MDLEDLFPET</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_enseignement_superieur_de_la_recherche_et_de" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’ENSEIGNEMENT SUPÉRIEUR, DE LA RECHERCHE ET DE</field>
+            <field name="code">MDLSDLRED</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_environnement_et_de_la_transition_ecologique" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’ENVIRONNEMENT ET DE LA TRANSITION ECOLOGIQUE</field>
+            <field name="code">MDLEDLTE</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_hydraulique_et_de_l_assainissement" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’HYDRAULIQUE ET DE L’ASSAINISSEMENT</field>
+            <field name="code">MDLEDL</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_industrie_et_du_commerce" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’INDUSTRIE ET DU COMMERCE</field>
+            <field name="code">MDLEDC</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_interieur_et_de_la_securite_publique" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’INTERIEUR ET DE LA SÉCURITÉ PUBLIQUE</field>
+            <field name="code">MDLEDLSP</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_integration_africaine_des_affaires_etrangeres_et" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’INTÉGRATION AFRICAINE, DES AFFAIRES ÉTRANGÈRES ET</field>
+            <field name="code">MDLADAÉE</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_de_l_urbanisme_des_collectivites_territoriales_et_de" model="sn.ministry">
+            <field name="name">MINISTÈRE DE L’URBANISME, DES COLLECTIVITÉS TERRITORIALES ET DE</field>
+            <field name="code">MDLDCTED</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_des_forces_armees" model="sn.ministry">
+            <field name="name">MINISTÈRE DES FORCES ARMÉES</field>
+            <field name="code">MDFA</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_des_peches_et_de_l_economie_maritime" model="sn.ministry">
+            <field name="name">MINISTÈRE DES PÊCHES ET DE L’ECONOMIE MARITIME</field>
+            <field name="code">MDPEDLM</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_ministere_des_transports_terrestres_et_aeriens" model="sn.ministry">
+            <field name="name">MINISTÈRE DES TRANSPORTS TERRESTRES ET AÉRIENS</field>
+            <field name="code">MDTTEA</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_numerique" model="sn.ministry">
+            <field name="name">NUMERIQUE</field>
+            <field name="code">NUM</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_presidence_de_la_republique" model="sn.ministry">
+            <field name="name">PRESIDENCE DE LA REPUBLIQUE</field>
+            <field name="code">PDLR</field>
+            <field name="type">presidency</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_primature" model="sn.ministry">
+            <field name="name">PRIMATURE</field>
+            <field name="code">PRI</field>
+            <field name="type">primature</field>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_min_service_public" model="sn.ministry">
+            <field name="name">SERVICE PUBLIC</field>
+            <field name="code">SERPUB</field>
+            <field name="type">ministry</field>
+            <field name="state">active</field>
+        </record>
     </data>
 </odoo>

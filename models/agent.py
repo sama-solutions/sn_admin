@@ -94,13 +94,12 @@ class Agent(models.Model):
     nomination_decree = fields.Char(string='Numéro du décret')
     nomination_document = fields.Binary(string='Document de nomination')
     end_date = fields.Date(string='Date de fin de fonction')
-    is_interim = fields.Boolean(string='Fonction intérimaire', default=False)
     
     # Champs QR Code
     qr_code = fields.Binary(
         string='QR Code',
         compute='_compute_qr_code',
-        store=False,
+        store=True,
     )
     qr_code_url = fields.Char(
         string='URL QR Code',
@@ -138,6 +137,7 @@ class Agent(models.Model):
         ('matricule_unique', 'UNIQUE(matricule)', 'Le matricule doit être unique'),
     ]
 
+    @api.depends('name')
     def _compute_qr_code_url(self):
         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
@@ -146,6 +146,7 @@ class Agent(models.Model):
             else:
                 record.qr_code_url = False
     
+    @api.depends('qr_code_url')
     def _compute_qr_code(self):
         for record in self:
             if record.qr_code_url:

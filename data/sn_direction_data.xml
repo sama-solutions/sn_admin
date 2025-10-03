@@ -1,18 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <!-- Placeholder file for direction data -->
-        <!-- This file should be populated with actual direction data from normalized CSV -->
-        <!-- Format example:
-        <record id="direction_dgs" model="sn.direction">
-            <field name="name">Direction Générale de la Santé</field>
-            <field name="code">DGS</field>
-            <field name="type">generale</field>
-            <field name="ministry_id" ref="ministry_msas"/>
-            <field name="phone">+221 33 889 34 10</field>
-            <field name="email">dgs@sante.gouv.sn</field>
+        <record id="sn_dir_ministere_de_la_culture_de_l_artisanat_et_du_tourisme__directions__direction_generale_de_la_culture" model="sn.direction">
+            <field name="name">Direction générale de la Culture</field>
+            <field name="code">DGDLC</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_culture_de_l_artisanat_et_du_tourisme"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_culture_de_l_artisanat_et_du_tourisme__directions"/>
             <field name="state">active</field>
         </record>
-        -->
+        <record id="sn_dir_ministere_de_l_energie_du_petrole_et_des_mines__cabinet_et_services_rattaches__secretariat_technique_du_comite_national_de_suivi_du_contenu_local" model="sn.direction">
+            <field name="name">Secrétariat technique du Comité national de suivi du Contenu local</field>
+            <field name="code">STDCNDSDCL</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_energie_du_petrole_et_des_mines"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_energie_du_petrole_et_des_mines__cabinet_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_energie_du_petrole_et_des_mines__directions__direction_generale_de_l_energie" model="sn.direction">
+            <field name="name">Direction générale de l’Energie</field>
+            <field name="code">DGDL</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_energie_du_petrole_et_des_mines"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_energie_du_petrole_et_des_mines__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_energie_du_petrole_et_des_mines__directions__direction_generale_des_hydrocarbures" model="sn.direction">
+            <field name="name">Direction générale des Hydrocarbures</field>
+            <field name="code">DGDH</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_energie_du_petrole_et_des_mines"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_energie_du_petrole_et_des_mines__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_energie_du_petrole_et_des_mines__directions__direction_generale_des_mines_et_de_la_geologie" model="sn.direction">
+            <field name="name">Direction générale des Mines et de la Géologie</field>
+            <field name="code">DGDMEDLG</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_energie_du_petrole_et_des_mines"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_energie_du_petrole_et_des_mines__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_energie_du_petrole_et_des_mines__directions__direction_generale_du_controle_et_de_la_surveillance_des_operations" model="sn.direction">
+            <field name="name">Direction générale du Contrôle et de la Surveillance des Opérations</field>
+            <field name="code">DGDCEDLSDO</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_energie_du_petrole_et_des_mines"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_energie_du_petrole_et_des_mines__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_famille_de_l_action_sociale_et_des_solidarites__directions__direction_generale_du_developpement_communautaire_et_de_la_promotion_de" model="sn.direction">
+            <field name="name">Direction générale du Développement communautaire et de la Promotion de</field>
+            <field name="code">DGDDCEDLPD</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_famille_de_l_action_sociale_et_des_solidarites"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_famille_de_l_action_sociale_et_des_solidarites__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_famille_de_l_action_sociale_et_des_solidarites__directions_regionales__direction_generale_de_l_action_sociale" model="sn.direction">
+            <field name="name">Direction générale de l’Action sociale</field>
+            <field name="code">DGDLS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_famille_de_l_action_sociale_et_des_solidarites"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_famille_de_l_action_sociale_et_des_solidarites__directions_regionales"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_jeunesse_et_des_sports__directions__30direction_generale_des_sports" model="sn.direction">
+            <field name="name">30Direction générale des Sports</field>
+            <field name="code">GDS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_jeunesse_et_des_sports"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_jeunesse_et_des_sports__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_jeunesse_et_des_sports__directions__direction_generale_de_la_jeunesse" model="sn.direction">
+            <field name="name">Direction générale de la Jeunesse</field>
+            <field name="code">DGDLJ</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_jeunesse_et_des_sports"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_jeunesse_et_des_sports__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_justice__directions__5direction_generale_de_la_protection_judiciaire_et_sociale" model="sn.direction">
+            <field name="name">5Direction générale de la Protection judiciaire et sociale</field>
+            <field name="code">GDLPJES</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_justice"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_justice__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_justice__directions__direction_generale_de_l_administration_penitentiaire" model="sn.direction">
+            <field name="name">Direction générale de l’Administration pénitentiaire</field>
+            <field name="code">DGDLP</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_justice"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_justice__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_microfinance_de_l_economie_sociale_et_solidaire__directions__direction_generale_des_constructions" model="sn.direction">
+            <field name="name">Direction générale des Constructions</field>
+            <field name="code">DGDC</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_microfinance_de_l_economie_sociale_et_solidaire"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_microfinance_de_l_economie_sociale_et_solidaire__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_la_microfinance_de_l_economie_sociale_et_solidaire__directions__direction_generale_des_infrastructures_routieres_et_du_desenclavement" model="sn.direction">
+            <field name="name">Direction générale des Infrastructures Routières et du Désenclavement</field>
+            <field name="code">DGDIREDD</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_la_microfinance_de_l_economie_sociale_et_solidaire"/>
+            <field name="category_id" ref="sn_cat_ministere_de_la_microfinance_de_l_economie_sociale_et_solidaire__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_emploi_et_de_la_formation_professionnelle_et_technique__directions__direction_generale_de_la_formation_professionnelle_et_technique" model="sn.direction">
+            <field name="name">Direction générale de la Formation professionnelle et technique</field>
+            <field name="code">DGDLFPET</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_emploi_et_de_la_formation_professionnelle_et_technique"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_emploi_et_de_la_formation_professionnelle_et_technique__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_emploi_et_de_la_formation_professionnelle_et_technique__directions__direction_generale_du_cadre_de_vie" model="sn.direction">
+            <field name="name">Direction générale du Cadre de vie</field>
+            <field name="code">DGDCDV</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_emploi_et_de_la_formation_professionnelle_et_technique"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_emploi_et_de_la_formation_professionnelle_et_technique__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_hydraulique_et_de_l_assainissement__directions__direction_generale_de_la_sante" model="sn.direction">
+            <field name="name">Direction générale de la Santé</field>
+            <field name="code">DGDLS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_hydraulique_et_de_l_assainissement"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_hydraulique_et_de_l_assainissement__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_hydraulique_et_de_l_assainissement__directions__direction_generale_des_etablissements_de_sante" model="sn.direction">
+            <field name="name">Direction générale des Etablissements de Santé</field>
+            <field name="code">DGDEDS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_hydraulique_et_de_l_assainissement"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_hydraulique_et_de_l_assainissement__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_interieur_et_de_la_securite_publique__directions__direction_generale_de_la_police_nationale" model="sn.direction">
+            <field name="name">Direction générale de la Police nationale</field>
+            <field name="code">DGDLPN</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_interieur_et_de_la_securite_publique"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_interieur_et_de_la_securite_publique__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_interieur_et_de_la_securite_publique__directions__direction_generale_de_l_administration_territoriale" model="sn.direction">
+            <field name="name">Direction générale de l’Administration territoriale</field>
+            <field name="code">DGDLT</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_interieur_et_de_la_securite_publique"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_interieur_et_de_la_securite_publique__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_interieur_et_de_la_securite_publique__directions__direction_generale_des_elections" model="sn.direction">
+            <field name="name">Direction générale des Elections</field>
+            <field name="code">DGDE</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_interieur_et_de_la_securite_publique"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_interieur_et_de_la_securite_publique__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_urbanisme_des_collectivites_territoriales_et_de__directions__direction_generale_de_la_reglementation_des_constructions_et_de_l_habitat" model="sn.direction">
+            <field name="name">Direction générale de la Réglementation des Constructions et de l’Habitat</field>
+            <field name="code">DGDLRDCEDL</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_urbanisme_des_collectivites_territoriales_et_de"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_urbanisme_des_collectivites_territoriales_et_de__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_de_l_urbanisme_des_collectivites_territoriales_et_de__directions__direction_generale_de_l_urbanisme_et_de_l_architecture" model="sn.direction">
+            <field name="name">Direction générale de l’Urbanisme et de l’Architecture</field>
+            <field name="code">DGDLEDL</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_de_l_urbanisme_des_collectivites_territoriales_et_de"/>
+            <field name="category_id" ref="sn_cat_ministere_de_l_urbanisme_des_collectivites_territoriales_et_de__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_des_finances_et_du_budget__directions__direction_generale_de_la_recherche_et_de_l_innovation" model="sn.direction">
+            <field name="name">Direction générale de la Recherche et de l’Innovation</field>
+            <field name="code">DGDLREDL</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_des_finances_et_du_budget"/>
+            <field name="category_id" ref="sn_cat_ministere_des_finances_et_du_budget__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_des_finances_et_du_budget__directions__direction_generale_de_l_enseignement_superieur" model="sn.direction">
+            <field name="name">Direction générale de l’Enseignement supérieur</field>
+            <field name="code">DGDLS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_des_finances_et_du_budget"/>
+            <field name="category_id" ref="sn_cat_ministere_des_finances_et_du_budget__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_des_forces_armees__services_propres__etat_major_general_des_armees" model="sn.direction">
+            <field name="name">Etat-Major général des Armées</field>
+            <field name="code">EGDA</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_des_forces_armees"/>
+            <field name="category_id" ref="sn_cat_ministere_des_forces_armees__services_propres"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_ministere_des_transports_terrestres_et_aeriens__directions__direction_generale_des_transports_routiers" model="sn.direction">
+            <field name="name">Direction générale des Transports routiers</field>
+            <field name="code">DGDTR</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_ministere_des_transports_terrestres_et_aeriens"/>
+            <field name="category_id" ref="sn_cat_ministere_des_transports_terrestres_et_aeriens__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__item__societe_de_gestion_des_infrastructures_publiques_dans_les_poles_urbains_de" model="sn.direction">
+            <field name="name">Société de Gestion des Infrastructures publiques dans les Pôles Urbains de</field>
+            <field name="code">SDGDIPDLPU</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_primature__autres_administrations__haute_autorite_du_waqf" model="sn.direction">
+            <field name="name">Haute Autorité du WAQF</field>
+            <field name="code">HADW</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_primature"/>
+            <field name="category_id" ref="sn_cat_primature__autres_administrations"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_primature__cabinet_du_premier_ministre_et_services_rattaches__secretariat_technique_du_conseil_national_de_securite_alimentaire" model="sn.direction">
+            <field name="name">Secrétariat technique du Conseil national de Sécurité alimentaire</field>
+            <field name="code">STDCNDSA</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_primature"/>
+            <field name="category_id" ref="sn_cat_primature__cabinet_du_premier_ministre_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_primature__secretariat_general_du_gouvernement_et_services_rattaches__direction_generale_du_service_civique_national_et_du_volontariat" model="sn.direction">
+            <field name="name">- Direction générale du Service civique national et du Volontariat</field>
+            <field name="code">DGDSCNEDV</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_primature"/>
+            <field name="category_id" ref="sn_cat_primature__secretariat_general_du_gouvernement_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_primature__secretariat_general_du_gouvernement_et_services_rattaches__direction_generale_de_la_surveillance_et_du_controle_de_l_occupation_du_sol" model="sn.direction">
+            <field name="name">Direction générale de la Surveillance et du Contrôle de l’Occupation du Sol</field>
+            <field name="code">DGDLSEDCDL</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_primature"/>
+            <field name="category_id" ref="sn_cat_primature__secretariat_general_du_gouvernement_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__autres_administrations__delegation_generale_a_la_promotion_des_poles_urbains_de_diamniadio_et_du_lac_rose" model="sn.direction">
+            <field name="name">Délégation générale à la Promotion des Pôles urbains de Diamniadio et du Lac Rose</field>
+            <field name="code">DGÀLPDPUDD</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__autres_administrations"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches__pole_communication_et_porte_parolat" model="sn.direction">
+            <field name="name">Pôle Communication et Porte-parolat</field>
+            <field name="code">PCEP</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches__pole_des_affaires_protocolaires" model="sn.direction">
+            <field name="name">Pôle des affaires protocolaires</field>
+            <field name="code">PDAP</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches__pole_diplomatique" model="sn.direction">
+            <field name="name">Pôle diplomatique</field>
+            <field name="code">PÔLDIP</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches__pole_juridique" model="sn.direction">
+            <field name="name">Pôle Juridique</field>
+            <field name="code">PÔLJUR</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches__pole_securite" model="sn.direction">
+            <field name="name">Pôle Sécurité</field>
+            <field name="code">PÔLSÉC</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches__secretariat_du_conseil_superieur_de_la_cour_des_comptes" model="sn.direction">
+            <field name="name">Secrétariat du Conseil supérieur de la Cour des Comptes</field>
+            <field name="code">SDCSDLCDC</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__cabinet_du_president_de_la_republique_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__cabinet_militaire_du_president_de_la_republique__haute_autorite_des_aeroports_du_senegal_haas" model="sn.direction">
+            <field name="name">➢ Haute Autorité des Aéroports du Sénégal (HAAS)</field>
+            <field name="code">HADADS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__cabinet_militaire_du_president_de_la_republique"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_presidence_de_la_republique__secretariat_general_de_la_presidence_de_la_republique_et_services_rattaches__direction_generale_du_chiffre_et_de_la_securite_des_systemes_d_information" model="sn.direction">
+            <field name="name">Direction générale du Chiffre et de la Sécurité des Systèmes d’information</field>
+            <field name="code">DGDCEDLSDS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_presidence_de_la_republique"/>
+            <field name="category_id" ref="sn_cat_presidence_de_la_republique__secretariat_general_de_la_presidence_de_la_republique_et_services_rattaches"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_service_public__directions__29direction_generale_du_travail_et_de_la_securite_sociale" model="sn.direction">
+            <field name="name">29Direction générale du Travail et de la Sécurité sociale</field>
+            <field name="code">GDTEDLSS</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_service_public"/>
+            <field name="category_id" ref="sn_cat_service_public__directions"/>
+            <field name="state">active</field>
+        </record>
+        <record id="sn_dir_service_public__directions__direction_generale_de_la_fonction_publique" model="sn.direction">
+            <field name="name">Direction générale de la Fonction publique</field>
+            <field name="code">DGDLFP</field>
+            <field name="type">departementale</field>
+            <field name="ministry_id" ref="sn_min_service_public"/>
+            <field name="category_id" ref="sn_cat_service_public__directions"/>
+            <field name="state">active</field>
+        </record>
     </data>
 </odoo>

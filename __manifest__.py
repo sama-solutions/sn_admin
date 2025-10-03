@@ -37,6 +37,7 @@
         'reports/sn_annuaire_report.xml',
         'reports/sn_statistics_report.xml',
         'data/sn_ministry_data.xml',
+        'data/sn_category_data.xml',
         'data/sn_direction_data.xml',
         'data/sn_service_data.xml',
         'data/sn_agent_data.xml',

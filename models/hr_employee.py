@@ -4,65 +4,53 @@ from odoo import models, fields, api
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    # Liens vers la structure organique
+    # Lien vers l'agent officiel
     sn_agent_id = fields.Many2one(
         comodel_name='sn.agent',
-        string='Agent SN Admin',
-        help='Lien vers le registre officiel',
+        string='Agent Officiel',
+        ondelete='restrict',
+        help='Lien vers le registre officiel de l\'administration',
     )
+    
+    # Champs relationnels (related depuis l'agent)
     sn_ministry_id = fields.Many2one(
         comodel_name='sn.ministry',
+        related='sn_agent_id.ministry_id',
         string='Ministère',
-        compute='_compute_sn_structure',
         store=True,
+        readonly=True,
     )
     sn_direction_id = fields.Many2one(
         comodel_name='sn.direction',
+        related='sn_agent_id.direction_id',
         string='Direction',
-        compute='_compute_sn_structure',
         store=True,
+        readonly=True,
     )
     sn_service_id = fields.Many2one(
         comodel_name='sn.service',
+        related='sn_agent_id.service_id',
         string='Service',
-        compute='_compute_sn_structure',
         store=True,
+        readonly=True,
+    )
+    
+    # Champs QR Code (related depuis l'agent)
+    sn_qr_code = fields.Binary(
+        string='QR Code Agent',
+        related='sn_agent_id.qr_code',
+        readonly=True,
+    )
+    sn_qr_code_url = fields.Char(
+        string='URL QR Code Agent',
+        related='sn_agent_id.qr_code_url',
+        readonly=True,
     )
 
     # Champs de nomination
     nomination_date = fields.Date(string='Date de nomination')
     nomination_decree = fields.Char(string='Numéro du décret')
     nomination_document = fields.Binary(string='Document de nomination')
-
-    @api.depends('sn_agent_id', 'sn_agent_id.service_id', 'sn_agent_id.direction_id', 'sn_agent_id.ministry_id', 'department_id')
-    def _compute_sn_structure(self):
-        for record in self:
-            if record.sn_agent_id:
-                record.sn_ministry_id = record.sn_agent_id.ministry_id
-                record.sn_direction_id = record.sn_agent_id.direction_id
-                record.sn_service_id = record.sn_agent_id.service_id
-            elif record.department_id:
-                # Chercher depuis le département
-                if record.department_id.sn_service_id:
-                    record.sn_service_id = record.department_id.sn_service_id
-                    record.sn_direction_id = record.department_id.sn_service_id.direction_id
-                    record.sn_ministry_id = record.department_id.sn_service_id.ministry_id
-                elif record.department_id.sn_direction_id:
-                    record.sn_service_id = False
-                    record.sn_direction_id = record.department_id.sn_direction_id
-                    record.sn_ministry_id = record.department_id.sn_direction_id.ministry_id
-                elif record.department_id.sn_ministry_id:
-                    record.sn_service_id = False
-                    record.sn_direction_id = False
-                    record.sn_ministry_id = record.department_id.sn_ministry_id
-                else:
-                    record.sn_service_id = False
-                    record.sn_direction_id = False
-                    record.sn_ministry_id = False
-            else:
-                record.sn_service_id = False
-                record.sn_direction_id = False
-                record.sn_ministry_id = False
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -86,8 +74,8 @@ class HrEmployee(models.Model):
     def write(self, vals):
         result = super().write(vals)
         for record in self:
-            # Synchroniser vers sn.agent si lié
-            if record.sn_agent_id:
+            # Synchroniser vers sn.agent si lié et auto_sync activé
+            if record.sn_agent_id and record.sn_agent_id.auto_sync_hr:
                 sync_vals = {}
                 if 'name' in vals:
                     sync_vals['name'] = vals['name']
@@ -97,8 +85,9 @@ class HrEmployee(models.Model):
                     sync_vals['mobile_phone'] = vals['mobile_phone']
                 if 'work_email' in vals:
                     sync_vals['work_email'] = vals['work_email']
-                if 'job_id' in vals:
-                    sync_vals['job_id'] = vals['job_id']
+                if 'job_id' in vals and vals['job_id']:
+                    job = self.env['hr.job'].browse(vals['job_id'])
+                    sync_vals['function'] = job.name
                 if sync_vals:
                     record.sn_agent_id.write(sync_vals)
         return result

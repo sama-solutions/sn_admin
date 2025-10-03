@@ -32,9 +32,9 @@
                                     invisible="not sn_service_id and not sn_direction_id and not sn_ministry_id"/>
                         </group>
                     </group>
-                    <group string="QR Code" invisible="not sn_agent_id">
-                        <field name="sn_agent_id.qr_code" widget="image" readonly="1"/>
-                        <field name="sn_agent_id.qr_code_url" readonly="1"/>
+                    <group string="QR Code Agent Officiel" invisible="not sn_agent_id">
+                        <field name="sn_qr_code" widget="image" readonly="1"/>
+                        <field name="sn_qr_code_url" widget="url" readonly="1"/>
                     </group>
                 </page>
             </xpath>

@@ -87,7 +87,7 @@ class Ministry(models.Model):
     qr_code = fields.Binary(
         string='QR Code',
         compute='_compute_qr_code',
-        store=False,
+        store=True,
     )
     qr_code_url = fields.Char(
         string='URL QR Code',
@@ -162,6 +162,7 @@ class Ministry(models.Model):
             else:
                 record.employee_count = 0
     
+    @api.depends('name')
     def _compute_qr_code_url(self):
         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
@@ -170,6 +171,7 @@ class Ministry(models.Model):
             else:
                 record.qr_code_url = False
     
+    @api.depends('qr_code_url')
     def _compute_qr_code(self):
         for record in self:
             if record.qr_code_url:
