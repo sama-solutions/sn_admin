@@ -12,18 +12,17 @@
                 <field name="sn_ministry_id" invisible="sn_structure_type != 'ministry'"/>
                 <field name="sn_direction_id" invisible="sn_structure_type != 'direction'"/>
                 <field name="sn_service_id" invisible="sn_structure_type != 'service'"/>
-            </xpath>
-            
-            <!-- Ajouter les boutons dans le header -->
-            <xpath expr="//header" position="inside">
-                <button name="action_view_sn_structure" 
-                        string="Voir Structure Officielle" 
-                        type="object"
-                        invisible="not sn_structure_type"/>
-                <button name="action_sync_from_sn_structure" 
-                        string="Synchroniser depuis Structure" 
-                        type="object"
-                        invisible="not sn_structure_type"/>
+                <separator string="Actions Structure Officielle" invisible="not sn_structure_type"/>
+                <div invisible="not sn_structure_type">
+                    <button name="action_view_sn_structure" 
+                            string="Voir Structure Officielle" 
+                            type="object"
+                            class="btn-primary"/>
+                    <button name="action_sync_from_sn_structure" 
+                            string="Synchroniser depuis Structure" 
+                            type="object"
+                            class="btn-secondary"/>
+                </div>
             </xpath>
         </field>
     </record>

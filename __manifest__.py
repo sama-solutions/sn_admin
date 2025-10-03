@@ -20,8 +20,11 @@
         'website',
     ],
     'data': [
+        # 1. Sécurité (toujours en premier)
         'security/sn_admin_security.xml',
         'security/ir.model.access.csv',
+        
+        # 2. Vues (définir les vues et actions AVANT les menus)
         'views/sn_ministry_views.xml',
         'views/sn_category_views.xml',
         'views/sn_direction_views.xml',
@@ -29,13 +32,21 @@
         'views/sn_agent_views.xml',
         'views/hr_employee_views.xml',
         'views/hr_department_views.xml',
-        'views/sn_admin_menus.xml',
         'views/sn_search_views.xml',
         'views/sn_dashboard.xml',
+        
+        # 3. Menus (APRÈS les actions)
+        'views/sn_admin_menus.xml',
+        
+        # 4. Templates web
         'views/website_templates.xml',
+        
+        # 5. Rapports
         'reports/sn_organigramme_report.xml',
         'reports/sn_annuaire_report.xml',
         'reports/sn_statistics_report.xml',
+        
+        # 6. Données (en dernier)
         'data/sn_ministry_data.xml',
         'data/sn_category_data.xml',
         'data/sn_direction_data.xml',

@@ -45,11 +45,11 @@ class Service(models.Model):
         default='draft',
     )
 
-    # Relations
+    # Relations hiérarchiques
     direction_id = fields.Many2one(
         comodel_name='sn.direction',
         string='Direction',
-        required=True,
+        required=False,  # Optionnel car certains services sont rattachés directement au ministère
         ondelete='cascade',
         index=True,
     )

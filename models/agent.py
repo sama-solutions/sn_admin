@@ -94,6 +94,7 @@ class Agent(models.Model):
     nomination_decree = fields.Char(string='Numéro du décret')
     nomination_document = fields.Binary(string='Document de nomination')
     end_date = fields.Date(string='Date de fin de fonction')
+    is_interim = fields.Boolean(string='Fonction intérimaire', default=False)
     
     # Champs QR Code
     qr_code = fields.Binary(

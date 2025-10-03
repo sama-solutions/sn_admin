@@ -28,6 +28,7 @@ class Direction(models.Model):
         selection=[
             ('generale', 'Direction Générale'),
             ('regionale', 'Direction Régionale'),
+            ('departementale', 'Direction Départementale'),
             ('technique', 'Direction Technique'),
         ],
         string='Type',
