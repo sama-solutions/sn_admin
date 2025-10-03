@@ -83,4 +83,16 @@
         <field name="perm_unlink" eval="False"/>
     </record>
 
+    <!-- Règle publique pour les catégories -->
+    <record id="rule_sn_category_public" model="ir.rule">
+        <field name="name">Catégories publiques</field>
+        <field name="model_id" ref="model_sn_category"/>
+        <field name="domain_force">[('active', '=', True), ('state', '=', 'active')]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
 </odoo>
