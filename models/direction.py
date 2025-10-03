@@ -159,7 +159,6 @@ class Direction(models.Model):
             else:
                 record.employee_count = 0
     
-    @api.depends('id')
     def _compute_qr_code_url(self):
         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:

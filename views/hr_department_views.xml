@@ -9,19 +9,19 @@
             <xpath expr="//group[@name='department_details']" position="after">
                 <group string="Structure Organique">
                     <field name="sn_structure_type"/>
-                    <field name="sn_ministry_id" attrs="{'invisible': [('sn_structure_type', '!=', 'ministry')]}"/>
-                    <field name="sn_direction_id" attrs="{'invisible': [('sn_structure_type', '!=', 'direction')]}"/>
-                    <field name="sn_service_id" attrs="{'invisible': [('sn_structure_type', '!=', 'service')]}"/>
+                    <field name="sn_ministry_id" invisible="sn_structure_type != 'ministry'"/>
+                    <field name="sn_direction_id" invisible="sn_structure_type != 'direction'"/>
+                    <field name="sn_service_id" invisible="sn_structure_type != 'service'"/>
                 </group>
                 <group>
                     <button name="action_view_sn_structure" 
                             string="Voir Structure Officielle" 
                             type="object"
-                            attrs="{'invisible': [('sn_structure_type', '=', False)]}"/>
+                            invisible="not sn_structure_type"/>
                     <button name="action_sync_from_sn_structure" 
                             string="Synchroniser depuis Structure" 
                             type="object"
-                            attrs="{'invisible': [('sn_structure_type', '=', False)]}"/>
+                            invisible="not sn_structure_type"/>
                 </group>
             </xpath>
         </field>

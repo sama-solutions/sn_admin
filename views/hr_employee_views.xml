@@ -21,18 +21,18 @@
                                     string="Créer Agent Officiel" 
                                     type="object" 
                                     class="oe_highlight"
-                                    attrs="{'invisible': [('sn_agent_id', '!=', False)]}"/>
+                                    invisible="sn_agent_id"/>
                             <button name="action_view_sn_agent" 
                                     string="Voir Agent Officiel" 
                                     type="object"
-                                    attrs="{'invisible': [('sn_agent_id', '=', False)]}"/>
+                                    invisible="not sn_agent_id"/>
                             <button name="action_view_sn_structure" 
                                     string="Voir Structure" 
                                     type="object"
-                                    attrs="{'invisible': [('sn_service_id', '=', False), ('sn_direction_id', '=', False), ('sn_ministry_id', '=', False)]}"/>
+                                    invisible="not sn_service_id and not sn_direction_id and not sn_ministry_id"/>
                         </group>
                     </group>
-                    <group string="QR Code" attrs="{'invisible': [('sn_agent_id', '=', False)]}">
+                    <group string="QR Code" invisible="not sn_agent_id">
                         <field name="sn_agent_id.qr_code" widget="image" readonly="1"/>
                         <field name="sn_agent_id.qr_code_url" readonly="1"/>
                     </group>

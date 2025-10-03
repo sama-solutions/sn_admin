@@ -27,8 +27,8 @@
                 <header>
                     <button name="action_view_services" type="object" string="Voir Services" class="oe_highlight"/>
                     <button name="action_view_agents" type="object" string="Voir Agents"/>
-                    <button name="action_create_hr_department" type="object" string="Créer Département RH" attrs="{'invisible': [('department_id', '!=', False)]}"/>
-                    <button name="action_sync_to_hr_department" type="object" string="Synchroniser vers RH" attrs="{'invisible': [('department_id', '=', False)]}"/>
+                    <button name="action_create_hr_department" type="object" string="Créer Département RH" invisible="department_id"/>
+                    <button name="action_sync_to_hr_department" type="object" string="Synchroniser vers RH" invisible="not department_id"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,active,archived"/>
                 </header>
                 <sheet>
@@ -39,11 +39,11 @@
                         <button name="action_view_agents" type="object" class="oe_stat_button" icon="fa-users">
                             <field name="agent_count" widget="statinfo" string="Agents"/>
                         </button>
-                        <button name="%(hr.open_view_employee_list_my)d" type="action" class="oe_stat_button" icon="fa-user" attrs="{'invisible': [('employee_count', '=', 0)]}">
+                        <button name="%(hr.open_view_employee_list_my)d" type="action" class="oe_stat_button" icon="fa-user" invisible="employee_count == 0">
                             <field name="employee_count" widget="statinfo" string="Employés RH"/>
                         </button>
                     </div>
-                    <widget name="web_ribbon" title="Archivé" bg_color="bg-danger" attrs="{'invisible': [('state', '!=', 'archived')]}"/>
+                    <widget name="web_ribbon" title="Archivé" bg_color="bg-danger" invisible="state != 'archived'"/>
                     <div class="oe_title">
                         <h1>
                             <field name="name" placeholder="Nom de la direction..."/>
@@ -105,8 +105,8 @@
                                 </group>
                             </group>
                             <group string="Actions RH">
-                                <button name="action_create_hr_department" type="object" string="Créer Département RH" class="btn-primary" attrs="{'invisible': [('department_id', '!=', False)]}"/>
-                                <button name="action_sync_to_hr_department" type="object" string="Synchroniser vers RH" class="btn-secondary" attrs="{'invisible': [('department_id', '=', False)]}"/>
+                                <button name="action_create_hr_department" type="object" string="Créer Département RH" class="btn-primary" invisible="department_id"/>
+                                <button name="action_sync_to_hr_department" type="object" string="Synchroniser vers RH" class="btn-secondary" invisible="not department_id"/>
                             </group>
                         </page>
                         <page string="Services">
